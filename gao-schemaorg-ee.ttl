@@ -1,0 +1,2780 @@
+@prefix : <http://ontologies.makolab.com/gao/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://ontologies.makolab.com/gao/> a owl:Ontology ;
+	owl:versionIRI :1.1 ;
+	rdfs:comment "General Automotive Ontology (GAO) is a web-based structured data vocabulary that extends auto.schema.org to support richer automotive data description. It is an external extension to schema.org that is fully independent and have its own workflows, review processes and infrastructure. GAO builds upon ontologies used by MakoLab for semantic Search Insights."@en ;
+	owl:versionInfo "version 1.0 (24-04-2017)"@en ;
+	rdfs:label "Automotive Schema.org External Extension"@en .
+# 
+# 
+# #################################################################
+# #
+# #    Annotation properties
+# #
+# #################################################################
+# 
+# 
+# http://www.w3.org/2004/02/skos/core#altLabel
+
+skos:altLabel a owl:AnnotationProperty .
+# 
+# http://www.w3.org/2004/02/skos/core#closeMatch
+
+skos:closeMatch a owl:AnnotationProperty .
+# 
+# http://www.w3.org/2004/02/skos/core#exactMatch
+
+skos:exactMatch a owl:AnnotationProperty .
+# 
+# http://www.w3.org/2004/02/skos/core#hiddenLabel
+
+skos:hiddenLabel a owl:AnnotationProperty .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# http://ontologies.makolab.com/gao/bodyType
+
+:bodyType a owl:ObjectProperty ;
+	rdfs:range :BodyType ;
+	rdfs:comment "Indicates the design and body style of the vehicle (e.g. station wagon, hatchback, etc.)."@en ;
+	rdfs:label "body type"@en ;
+	skos:exactMatch "http://auto.schema.org/bodyType"^^xsd:anyURI .
+# 
+# http://ontologies.makolab.com/gao/engineType
+
+:engineType a owl:ObjectProperty ;
+	rdfs:range :EngineType ;
+	rdfs:comment "The type of engine or engines powering the vehicle."@en ;
+	rdfs:label "engine type"@en ;
+	skos:exactMatch "http://auto.schema.org/engineType"^^xsd:anyURI .
+# 
+# http://ontologies.makolab.com/gao/transmission
+
+:transmission a owl:ObjectProperty ;
+	rdfs:range :Transmission ;
+	rdfs:label "gearbox type"@en .
+# 
+# http://ontologies.makolab.com/gao/vehicleSpecialUsage
+
+:vehicleSpecialUsage a owl:ObjectProperty ;
+	rdfs:range :CarUsageType ;
+	rdfs:comment "Indicates whether the vehicle has been used for special purposes, like commercial rental, driving school, or as a taxi. The legislation in many countries requires this information to be revealed when offering a car for sale."@en ;
+	rdfs:label "vehicle special usage"@en ;
+	skos:exactMatch "http://auto.schema.org/vehicleSpecialUsage"^^xsd:anyURI .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Data properties
+# #
+# #################################################################
+# 
+# 
+# http://ontologies.makolab.com/gao/accelerationTime
+
+:accelerationTime a owl:DatatypeProperty ;
+	rdfs:comment """The time needed to accelerate the vehicle from a given start velocity to a given target velocity.
+Typical unit code(s): SEC for seconds.
+Note: There are unfortunately no standard unit codes for seconds/0..100 km/h or seconds/0..60 mph. Simply use \"SEC\" for seconds and indicate the velocities in the name of the QuantitativeValue, or use valueReference with a QuantitativeValue of 0..60 mph or 0..100 km/h to specify the reference speeds."""@en ;
+	rdfs:label "acceleration time"@en ;
+	skos:exactMatch "http://auto.schema.org/accelerationTime"^^xsd:anyURI .
+# 
+# http://ontologies.makolab.com/gao/acrissCode
+
+:acrissCode a owl:DatatypeProperty ;
+	rdfs:comment "The ACRISS Car Classification Code is a code used by many car rental companies, for classifying vehicles. ACRISS stands for Association of Car Rental Industry Systems and Standards."@en ;
+	rdfs:label "acriss code"@en ;
+	skos:exactMatch "http://auto.schema.org/acrissCode"^^xsd:anyURI .
+# 
+# http://ontologies.makolab.com/gao/brakingTrailerWeight
+
+:brakingTrailerWeight a owl:DatatypeProperty ;
+	rdfs:label "braking trailer weight"@en .
+# 
+# http://ontologies.makolab.com/gao/combinedCycleFuelConsumption
+
+:combinedCycleFuelConsumption a owl:DatatypeProperty ;
+	rdfs:subPropertyOf :fuelConsumption ;
+	rdfs:label "combined cycle fuel consumption"@en ;
+	skos:hiddenLabel "combined cycle"@en .
+# 
+# http://ontologies.makolab.com/gao/compressionRatio
+
+:compressionRatio a owl:DatatypeProperty ;
+	rdfs:domain :EngineType ;
+	rdfs:label "Compression ratio"@en .
+# 
+# http://ontologies.makolab.com/gao/doors
+
+:doors a owl:DatatypeProperty ;
+	rdfs:label "doors"@en , "drzwi"@pl .
+# 
+# http://ontologies.makolab.com/gao/emissionsCO2
+
+:emissionsCO2 a owl:DatatypeProperty ;
+	rdfs:comment "The CO2 emissions in g/km. When used in combination with a QuantitativeValue, put \"g/km\" into the unitText property of that value, since there is no UN/CEFACT Common Code for \"g/km\"."@en ;
+	rdfs:label "CO2 emission"@en ;
+	skos:exactMatch "http://auto.schema.org/emissionsCO2"^^xsd:anyURI .
+# 
+# http://ontologies.makolab.com/gao/emissionsCO2MixedCycle
+
+:emissionsCO2MixedCycle a owl:DatatypeProperty ;
+	rdfs:subPropertyOf :emissionsCO2 ;
+	rdfs:label "CO2 emission mixed cycle"@en .
+# 
+# http://ontologies.makolab.com/gao/engineCapacity
+
+:engineCapacity a owl:DatatypeProperty ;
+	rdfs:domain :EngineType ;
+	rdfs:label "Engine capacity"@en .
+# 
+# http://ontologies.makolab.com/gao/engineDisplacement
+
+:engineDisplacement a owl:DatatypeProperty ;
+	rdfs:domain :EngineType ;
+	rdfs:comment """The volume swept by all of the pistons inside the cylinders of an internal combustion engine in a single movement.
+Typical unit code(s): CMQ for cubic centimeter, LTR for liters, INQ for cubic inches * Note 1: You can link to information about how the given value has been determined using the valueReference property. * Note 2: You can use minValue and maxValue to indicate ranges."""@en ;
+	rdfs:label "engine displacement"@en ;
+	skos:exactMatch "http://auto.schema.org/engineDisplacement"^^xsd:anyURI .
+# 
+# http://ontologies.makolab.com/gao/enginePower
+
+:enginePower a owl:DatatypeProperty ;
+	rdfs:domain :EngineType ;
+	rdfs:comment """The power of the vehicle's engine. Typical unit code(s): KWT for kilowatt, BHP for brake horsepower, N12 for metric horsepower (PS, with 1 PS = 735,49875 W)
+Note 1: There are many different ways of measuring an engine's power. For an overview, see http://en.wikipedia.org/wiki/Horsepower#Enginepowertest_codes.
+Note 2: You can link to information about how the given value has been determined using the valueReference property.
+Note 3: You can use minValue and maxValue to indicate ranges."""@en ;
+	rdfs:label "engine power"@en ;
+	skos:exactMatch "http://auto.schema.org/enginePower"^^xsd:anyURI .
+# 
+# http://ontologies.makolab.com/gao/extraUrbancycleFuelConsumption
+
+:extraUrbancycleFuelConsumption a owl:DatatypeProperty ;
+	rdfs:subPropertyOf :fuelConsumption ;
+	rdfs:label "extra urban cycle fuel consumption"@en ;
+	skos:hiddenLabel "Extra Urban cycle"@en .
+# 
+# http://ontologies.makolab.com/gao/fuelCapacity
+
+:fuelCapacity a owl:DatatypeProperty ;
+	rdfs:comment """The capacity of the fuel tank or in the case of electric cars, the battery. If there are multiple components for storage, this should indicate the total of all storage of the same type.
+Typical unit code(s): LTR for liters, GLL of US gallons, GLI for UK / imperial gallons, AMH for ampere-hours (for electrical vehicles)."""@en ;
+	rdfs:label "fuel capacity"@en ;
+	skos:altLabel "fuel tank capacity"@en ;
+	skos:exactMatch "http://auto.schema.org/fuelCapacity"^^xsd:anyURI .
+# 
+# http://ontologies.makolab.com/gao/fuelConsumption
+
+:fuelConsumption a owl:DatatypeProperty ;
+	rdfs:label "fuel consumption"@en , "zużycie paliwa"@pl .
+# 
+# http://ontologies.makolab.com/gao/gearsNumber
+
+:gearsNumber a owl:DatatypeProperty ;
+	rdfs:label "number of gears"@en .
+# 
+# http://ontologies.makolab.com/gao/grossTrainWeight
+
+:grossTrainWeight a owl:DatatypeProperty ;
+	rdfs:label "GTW"@en , "Gross train weight"@en .
+# 
+# http://ontologies.makolab.com/gao/grossVehicleWeight
+
+:grossVehicleWeight a owl:DatatypeProperty ;
+	rdfs:label "GVW"@en , "Gross vehicle weight"@en .
+# 
+# http://ontologies.makolab.com/gao/grossVehicleWeightRating
+
+:grossVehicleWeightRating a owl:DatatypeProperty ;
+	rdfs:label "GVWR"@en , "Gross vehicle weight rating"@en .
+# 
+# http://ontologies.makolab.com/gao/kerbWeight
+
+:kerbWeight a owl:DatatypeProperty ;
+	rdfs:label "kerb weight"@en ;
+	skos:altLabel "curb weight"@en .
+# 
+# http://ontologies.makolab.com/gao/kerbWeightOnFront
+
+:kerbWeightOnFront a owl:DatatypeProperty ;
+	rdfs:label "Kerb weight on front"@en .
+# 
+# http://ontologies.makolab.com/gao/kerbWeightOnRear
+
+:kerbWeightOnRear a owl:DatatypeProperty ;
+	rdfs:label "Kerb weight on rear"@en .
+# 
+# http://ontologies.makolab.com/gao/loadVolume
+
+:loadVolume a owl:DatatypeProperty ;
+	rdfs:label "load volume"@en , "ładowność"@pl .
+# 
+# http://ontologies.makolab.com/gao/lockToLockSteeringWheelTurns
+
+:lockToLockSteeringWheelTurns a owl:DatatypeProperty ;
+	rdfs:label "Lock-to-lock steering wheel turns"@en .
+# 
+# http://ontologies.makolab.com/gao/maxSpeed
+
+:maxSpeed a owl:DatatypeProperty ;
+	rdfs:label "max speed"@en , "szybkość maksymalna"@pl .
+# 
+# http://ontologies.makolab.com/gao/meetsEmissionStandard
+
+:meetsEmissionStandard a owl:DatatypeProperty ;
+	rdfs:label "meets emission etandard"@en ;
+	skos:exactMatch "http://auto.schema.org/meetsEmissionStandard"^^xsd:anyURI .
+# 
+# http://ontologies.makolab.com/gao/modelDate
+
+:modelDate a owl:DatatypeProperty ;
+	rdfs:range xsd:dateTime ;
+	rdfs:comment "The release date of a vehicle model (often used to differentiate versions of the same make and model)."@en ;
+	rdfs:label "model date"@en ;
+	skos:exactMatch "http://auto.schema.org/modelDate"^^xsd:anyURI .
+# 
+# http://ontologies.makolab.com/gao/numberOfCylinders
+
+:numberOfCylinders a owl:DatatypeProperty ;
+	rdfs:label "Number of cylinders"@en ;
+	skos:altLabel "No. of cylinders"@en , "Valve"@en .
+# 
+# http://ontologies.makolab.com/gao/numberOfSteeringWheelRotations
+
+:numberOfSteeringWheelRotations a owl:DatatypeProperty ;
+	rdfs:label "Number of steering wheel rotations"@en ;
+	skos:altLabel "No. of steering wheel rotations"@en .
+# 
+# http://ontologies.makolab.com/gao/payload
+
+:payload a owl:DatatypeProperty ;
+	rdfs:comment """The permitted weight of passengers and cargo, EXCLUDING the weight of the empty vehicle.
+Typical unit code(s): KGM for kilogram, LBR for pound
+Note 1: Many databases specify the permitted TOTAL weight instead, which is the sum of weight and payload
+Note 2: You can indicate additional information in the name of the QuantitativeValue node.
+Note 3: You may also link to a QualitativeValue node that provides additional information using valueReference.
+Note 4: Note that you can use minValue and maxValue to indicate ranges."""@en ;
+	rdfs:label "payload"@en ;
+	skos:exactMatch "http://auto.schema.org/payload"^^xsd:anyURI .
+# 
+# http://ontologies.makolab.com/gao/roofLoad
+
+:roofLoad a owl:DatatypeProperty ;
+	rdfs:comment """The permitted total weight of cargo and installations (e.g. a roof rack) on top of the vehicle.
+Typical unit code(s): KGM for kilogram, LBR for pound
+Note 1: You can indicate additional information in the name of the QuantitativeValue node.
+Note 2: You may also link to a QualitativeValue node that provides additional information using valueReference
+Note 3: Note that you can use minValue and maxValue to indicate ranges."""@en ;
+	rdfs:label "roof load"@en ;
+	skos:exactMatch "http://auto.schema.org/roofLoad"^^xsd:anyURI .
+# 
+# http://ontologies.makolab.com/gao/seatingCapacity
+
+:seatingCapacity a owl:DatatypeProperty ;
+	rdfs:comment """The number of persons that can be seated (e.g. in a vehicle), both in terms of the physical space available, and in terms of limitations set by law.
+Typical unit code(s): C62 for persons"""@en ;
+	rdfs:label "seating capacity"@en ;
+	skos:exactMatch "http://auto.schema.org/seatingCapacity"@en .
+# 
+# http://ontologies.makolab.com/gao/speed
+
+:speed a owl:DatatypeProperty ;
+	rdfs:comment """The speed range of the vehicle. If the vehicle is powered by an engine, the upper limit of the speed range (indicated by maxValue should be the maximum speed achievable under regular conditions.
+Typical unit code(s): KMH for km/h, HM for mile per hour (0.447 04 m/s), KNT for knot
+*Note 1: Use minValue and maxValue to indicate the range. Typically, the minimal value is zero. * Note 2: There are many different ways of measuring the speed range. You can link to information about how the given value has been determined using the valueReference property."""@en ;
+	rdfs:label "speed"@en ;
+	skos:exactMatch "http://auto.schema.org/speed"^^xsd:anyURI .
+# 
+# http://ontologies.makolab.com/gao/stoppingDistance1000m
+
+:stoppingDistance1000m a owl:DatatypeProperty ;
+	rdfs:label "1000m stopping distance"@en .
+# 
+# http://ontologies.makolab.com/gao/stoppingDistance400m
+
+:stoppingDistance400m a owl:DatatypeProperty ;
+	rdfs:label "400m stopping distance"@en .
+# 
+# http://ontologies.makolab.com/gao/timeFrom0To100
+
+:timeFrom0To100 a owl:DatatypeProperty ;
+	rdfs:label "time 0-100 km/h"@en .
+# 
+# http://ontologies.makolab.com/gao/tongueWeight
+
+:tongueWeight a owl:DatatypeProperty ;
+	rdfs:comment """The permitted vertical load (TWR) of a trailer attached to the vehicle. Also referred to as Tongue Load Rating (TLR) or Vertical Load Rating (VLR)
+Typical unit code(s): KGM for kilogram, LBR for pound
+Note 1: You can indicate additional information in the name of the QuantitativeValue node.
+Note 2: You may also link to a QualitativeValue node that provides additional information using valueReference.
+Note 3: Note that you can use minValue and maxValue to indicate ranges."""@en ;
+	rdfs:label "tongue weight"@en ;
+	skos:exactMatch "http://auto.schema.org/tongueWeight"^^xsd:anyURI .
+# 
+# http://ontologies.makolab.com/gao/topSpeed
+
+:topSpeed a owl:DatatypeProperty ;
+	rdfs:label "Top Speed"@en .
+# 
+# http://ontologies.makolab.com/gao/trailerWeight
+
+:trailerWeight a owl:DatatypeProperty ;
+	rdfs:comment """The permitted weight of a trailer attached to the vehicle.
+Typical unit code(s): KGM for kilogram, LBR for pound * Note 1: You can indicate additional information in the name of the QuantitativeValue node. * Note 2: You may also link to a QualitativeValue node that provides additional information using valueReference. * Note 3: Note that you can use minValue and maxValue to indicate ranges."""@en ;
+	rdfs:label "trailer weight"@en ;
+	skos:exactMatch "http://auto.schema.org/trailerWeight"^^xsd:anyURI .
+# 
+# http://ontologies.makolab.com/gao/turningCircle
+
+:turningCircle a owl:DatatypeProperty ;
+	rdfs:label "Turning circle between kerbs/walls (m)"@en .
+# 
+# http://ontologies.makolab.com/gao/unbrakedTrailerWeight
+
+:unbrakedTrailerWeight a owl:DatatypeProperty ;
+	rdfs:label "unbraked trailer weight"@en .
+# 
+# http://ontologies.makolab.com/gao/urbanCycleFuelConsumption
+
+:urbanCycleFuelConsumption a owl:DatatypeProperty ;
+	rdfs:subPropertyOf :fuelConsumption ;
+	rdfs:label "Urban cycle"@en .
+# 
+# http://ontologies.makolab.com/gao/weightTotal
+
+:weightTotal a owl:DatatypeProperty ;
+	rdfs:comment """The permitted total weight of the loaded vehicle, including passengers and cargo and the weight of the empty vehicle.
+Typical unit code(s): KGM for kilogram, LBR for pound
+Note 1: You can indicate additional information in the name of the QuantitativeValue node.
+Note 2: You may also link to a QualitativeValue node that provides additional information using valueReference.
+Note 3: Note that you can use minValue and maxValue to indicate ranges."""@en ;
+	rdfs:label "weight total"@en ;
+	skos:exactMatch "http://auto.schema.org/weightTotal"^^xsd:anyURI .
+# 
+# http://ontologies.makolab.com/gao/wheelbase
+
+:wheelbase a owl:DatatypeProperty ;
+	rdfs:comment """The distance between the centers of the front and rear wheels.
+Typical unit code(s): CMT for centimeters, MTR for meters, INH for inches, FOT for foot/feet"""@en ;
+	rdfs:label "wheel base"@en ;
+	skos:exactMatch "http://auto.schema.org/wheelbase"^^xsd:anyURI .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://ontologies.makolab.com/gao/ABS
+
+:ABS a owl:Class ;
+	rdfs:subClassOf :ActiveSafetySystem ;
+	rdfs:label "anti-lock braking system"@en ;
+	skos:altLabel "ABS"@en ;
+	skos:hiddenLabel "anti-lock brake"@en .
+# 
+# http://ontologies.makolab.com/gao/ASR
+
+:ASR a owl:Class ;
+	rdfs:subClassOf :ActiveSafetySystem ;
+	rdfs:label "anti-slip regulation"@en ;
+	skos:altLabel "ASR"@en .
+# 
+# http://ontologies.makolab.com/gao/AUXJack
+
+:AUXJack a owl:Class ;
+	rdfs:subClassOf :Connecting ;
+	rdfs:label "AUX jack"@en ;
+	skos:hiddenLabel "jack"@en .
+# 
+# http://ontologies.makolab.com/gao/ActiveOrPassiveSafetySystem
+
+:ActiveOrPassiveSafetySystem a owl:Class ;
+	rdfs:subClassOf :Safety ;
+	rdfs:label "active and passive safety system"@en .
+# 
+# http://ontologies.makolab.com/gao/ActiveSafetySystem
+
+:ActiveSafetySystem a owl:Class ;
+	rdfs:subClassOf :ActiveOrPassiveSafetySystem ;
+	rdfs:comment "urządzenie zapobiegające stłuczce lub wypadkowi"@pl ;
+	rdfs:label "active safety system"@en , "system bezpeczeństwa czynnego"@pl .
+# 
+# http://ontologies.makolab.com/gao/AdjustableDriverSeat
+
+:AdjustableDriverSeat a owl:Class ;
+	rdfs:subClassOf :Seat ;
+	rdfs:label "adjustable driver seat"@en .
+# 
+# http://ontologies.makolab.com/gao/AdjustablePassengerSeat
+
+:AdjustablePassengerSeat a owl:Class ;
+	rdfs:subClassOf :PassengerSeat ;
+	rdfs:label "adjustable passenger seat"@en .
+# 
+# http://ontologies.makolab.com/gao/AdjustableSteeringWheel
+
+:AdjustableSteeringWheel a owl:Class ;
+	rdfs:subClassOf :SteeringWheel ;
+	rdfs:label "adjustable steering wheel"@en .
+# 
+# http://ontologies.makolab.com/gao/AirConditioning
+
+:AirConditioning a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "air conditioning"@en .
+# 
+# http://ontologies.makolab.com/gao/AirDeflector
+
+:AirDeflector a owl:Class ;
+	rdfs:subClassOf :ExternalCarAccessory ;
+	rdfs:label "air deflector"@en .
+# 
+# http://ontologies.makolab.com/gao/AirQualitySensor
+
+:AirQualitySensor a owl:Class ;
+	rdfs:subClassOf :Sensor ;
+	rdfs:label "air quality sensor"@en .
+# 
+# http://ontologies.makolab.com/gao/Airbag
+
+:Airbag a owl:Class ;
+	rdfs:subClassOf :PassiveSafetySystem ;
+	rdfs:label "airbag"@en .
+# 
+# http://ontologies.makolab.com/gao/AirconditioningVent
+
+:AirconditioningVent a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "air conditioning vent"@en .
+# 
+# http://ontologies.makolab.com/gao/Alarm
+
+:Alarm a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "alarm"@en .
+# 
+# http://ontologies.makolab.com/gao/AlloyWheel
+
+:AlloyWheel a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "alloy wheel"@en , "felga aluminiowa"@pl .
+# 
+# http://ontologies.makolab.com/gao/AntiDrillDoorLock
+
+:AntiDrillDoorLock a owl:Class ;
+	rdfs:subClassOf :AntiIntruderSystem ;
+	rdfs:label "anti-drill door lock"@en .
+# 
+# http://ontologies.makolab.com/gao/AntiDrillgnitionBarrel
+
+:AntiDrillgnitionBarrel a owl:Class ;
+	rdfs:subClassOf :AntiIntruderSystem ;
+	rdfs:label "anti-drill ignition barrel"@en .
+# 
+# http://ontologies.makolab.com/gao/AntiIntruderSystem
+
+:AntiIntruderSystem a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "anti-intruder system"@en ;
+	skos:altLabel "anti-intruder device"@en , "anti-intrusion device"@en .
+# 
+# http://ontologies.makolab.com/gao/AntiSubmarinSystem
+
+:AntiSubmarinSystem a owl:Class ;
+	rdfs:subClassOf :PassiveSafetySystem ;
+	rdfs:label "anti-submarin system"@en .
+# 
+# http://ontologies.makolab.com/gao/AntiTheftEmergencySpareWheelCradle
+
+:AntiTheftEmergencySpareWheelCradle a owl:Class ;
+	rdfs:subClassOf :AntiIntruderSystem ;
+	rdfs:label "anti-theft emergency spare wheel cradle"@en .
+# 
+# http://ontologies.makolab.com/gao/ArmRest
+
+:ArmRest a owl:Class ;
+	rdfs:subClassOf :InternalCarAccessory ;
+	rdfs:label "arm rest"@en .
+# 
+# http://ontologies.makolab.com/gao/Ashtray
+
+:Ashtray a owl:Class ;
+	rdfs:subClassOf :InternalCarAccessory ;
+	rdfs:label "ashtray"@en .
+# 
+# http://ontologies.makolab.com/gao/AudioSystemElement
+
+:AudioSystemElement a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "audio system element"@en .
+# 
+# http://ontologies.makolab.com/gao/AutoLightingSensor
+
+:AutoLightingSensor a owl:Class ;
+	rdfs:subClassOf :Sensor , :VisibilityAndLighting ;
+	rdfs:label "light sensor"@en .
+# 
+# http://ontologies.makolab.com/gao/AutoRainSensor
+
+:AutoRainSensor a owl:Class ;
+	rdfs:subClassOf :Sensor , :VisibilityAndLighting ;
+	rdfs:label "rain sensor"@en .
+# 
+# http://ontologies.makolab.com/gao/AutomaticAirConditioning
+
+:AutomaticAirConditioning a owl:Class ;
+	rdfs:subClassOf :AirConditioning ;
+	rdfs:label "automatic air-conditioning"@en .
+# 
+# http://ontologies.makolab.com/gao/AutomaticHazardWarningLight
+
+:AutomaticHazardWarningLight a owl:Class ;
+	rdfs:subClassOf :ActiveSafetySystem ;
+	rdfs:label "automatic hazard warning light"@en .
+# 
+# http://ontologies.makolab.com/gao/AutomaticLoweringAirSuspension
+
+:AutomaticLoweringAirSuspension a owl:Class ;
+	rdfs:subClassOf :Suspension ;
+	rdfs:label "automatic lowering air suspension"@en .
+# 
+# http://ontologies.makolab.com/gao/AutomaticQuickReleaseTowBar
+
+:AutomaticQuickReleaseTowBar a owl:Class ;
+	rdfs:subClassOf :TowBar ;
+	rdfs:label "automatic quick release tow bar"@en .
+# 
+# http://ontologies.makolab.com/gao/AutomaticWindscreenWiper
+
+:AutomaticWindscreenWiper a owl:Class ;
+	rdfs:subClassOf :Wiper ;
+	rdfs:label "automatic windscreen wipers"@en .
+# 
+# http://ontologies.makolab.com/gao/BAS
+
+:BAS a owl:Class ;
+	rdfs:subClassOf :ActiveSafetySystem ;
+	rdfs:label "brake assist system"@en ;
+	skos:altLabel "BAS"@en .
+# 
+# http://ontologies.makolab.com/gao/BedMat
+
+:BedMat a owl:Class ;
+	rdfs:subClassOf :Mat ;
+	rdfs:label "bed mat"@en .
+# 
+# http://ontologies.makolab.com/gao/BiXenonDirectionalHeadlight
+
+:BiXenonDirectionalHeadlight a owl:Class ;
+	rdfs:subClassOf :Frontlight ;
+	rdfs:label "bi-xenon directional headlight"@en .
+# 
+# http://ontologies.makolab.com/gao/BicycleCarrier
+
+:BicycleCarrier a owl:Class ;
+	rdfs:subClassOf :ExternalCarAccessory ;
+	rdfs:label "bicycle carrier"@en .
+# 
+# http://ontologies.makolab.com/gao/Blanket
+
+:Blanket a owl:Class ;
+	rdfs:subClassOf :InternalCarAccessory ;
+	rdfs:label "blanket"@en .
+# 
+# http://ontologies.makolab.com/gao/Bluetooth
+
+:Bluetooth a owl:Class ;
+	rdfs:subClassOf :Connecting ;
+	rdfs:label "bluetooth"@en .
+# 
+# http://ontologies.makolab.com/gao/BodyType
+
+:BodyType a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "body type"@en .
+# 
+# http://ontologies.makolab.com/gao/BootLight
+
+:BootLight a owl:Class ;
+	rdfs:subClassOf :LightingElement ;
+	rdfs:label "boot light"@en .
+# 
+# http://ontologies.makolab.com/gao/BottleHolder
+
+:BottleHolder a owl:Class ;
+	rdfs:subClassOf :StorageArea ;
+	rdfs:label "bottle holder"@en .
+# 
+# http://ontologies.makolab.com/gao/Brake
+
+:Brake a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "brake"@en .
+# 
+# http://ontologies.makolab.com/gao/Bumper
+
+:Bumper a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "bumper"@en .
+# 
+# http://ontologies.makolab.com/gao/BumperGuard
+
+:BumperGuard a owl:Class ;
+	rdfs:subClassOf :ExternalCarAccessory ;
+	rdfs:label "bumper guard"@en .
+# 
+# http://ontologies.makolab.com/gao/BusOrCoach
+
+:BusOrCoach a owl:Class ;
+	rdfs:subClassOf :Vehicle ;
+	rdfs:comment "A bus (also omnibus or autobus) is a road vehicle designed to carry passengers. Coaches are luxury busses, usually in service for long distance travel."@en ;
+	rdfs:label "bus or coach"@en ;
+	skos:exactMatch "https://schema.org/BusOrCoach"^^xsd:anyURI .
+# 
+# http://ontologies.makolab.com/gao/ButterflyDoors
+
+:ButterflyDoors a owl:Class ;
+	rdfs:subClassOf :Door ;
+	rdfs:label "butterfly doors"@en .
+# 
+# http://ontologies.makolab.com/gao/CD
+
+:CD a owl:Class ;
+	rdfs:subClassOf :AudioSystemElement ;
+	rdfs:label "CD"@en .
+# 
+# http://ontologies.makolab.com/gao/Car
+
+:Car a owl:Class ;
+	rdfs:subClassOf :Vehicle ;
+	rdfs:comment "Road vehicle with an engine, four wheels, and seats for a small number of people."@en , "This cars' classification is based on the United States National Highway Traffic Safety Administration (NHTSA) classification of cars."@en ;
+	rdfs:label "car"@en , "samochód"@pl ;
+	skos:exactMatch "https://schema.org/Car"^^xsd:anyURI ;
+	skos:hiddenLabel "model"@en .
+# 
+# http://ontologies.makolab.com/gao/CarBattery
+
+:CarBattery a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "car battery"@en .
+# 
+# http://ontologies.makolab.com/gao/CarUsageType
+
+:CarUsageType a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "car usage type"@en ;
+	skos:exactMatch "http://auto.schema.org/CarUsageType"^^xsd:anyURI .
+# 
+# http://ontologies.makolab.com/gao/CargoAreaLighting
+
+:CargoAreaLighting a owl:Class ;
+	rdfs:subClassOf :LightingElement ;
+	rdfs:label "cargo area lighting"@en .
+# 
+# http://ontologies.makolab.com/gao/CargoNet
+
+:CargoNet a owl:Class ;
+	rdfs:subClassOf :Net ;
+	rdfs:label "cargo net"@en ;
+	skos:altLabel "cargo boot net"@en .
+# 
+# http://ontologies.makolab.com/gao/CarpetMat
+
+:CarpetMat a owl:Class ;
+	rdfs:subClassOf :FloorMat ;
+	rdfs:label "carpet mat"@en .
+# 
+# http://ontologies.makolab.com/gao/Cassette
+
+:Cassette a owl:Class ;
+	rdfs:subClassOf :AudioSystemElement ;
+	rdfs:label "cassette"@en .
+# 
+# http://ontologies.makolab.com/gao/CentralConsole
+
+:CentralConsole a owl:Class ;
+	rdfs:subClassOf :InteriorPresentation ;
+	rdfs:label "central console"@en .
+# 
+# http://ontologies.makolab.com/gao/ChildSafety
+
+:ChildSafety a owl:Class ;
+	rdfs:subClassOf :Safety ;
+	rdfs:label "child safety"@en .
+# 
+# http://ontologies.makolab.com/gao/CigaretteLighter
+
+:CigaretteLighter a owl:Class ;
+	rdfs:subClassOf :InternalCarAccessory ;
+	rdfs:label "cigarette lighter"@en .
+# 
+# http://ontologies.makolab.com/gao/CleanBox
+
+:CleanBox a owl:Class ;
+	rdfs:subClassOf :InternalCarAccessory ;
+	rdfs:label "clean box"@en .
+# 
+# http://ontologies.makolab.com/gao/CoatHanger
+
+:CoatHanger a owl:Class ;
+	rdfs:subClassOf :InternalCarAccessory ;
+	rdfs:label "coat hanger"@en .
+# 
+# http://ontologies.makolab.com/gao/Color
+
+:Color a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "colour"@en ;
+	skos:altLabel "color"@en ;
+	skos:hiddenLabel "paint"@en .
+# 
+# http://ontologies.makolab.com/gao/CommercialVehicle
+
+:CommercialVehicle a owl:Class ;
+	rdfs:subClassOf :Car ;
+	rdfs:label "commercial vehicle"@en ;
+	skos:altLabel "VAN"@en .
+# 
+# http://ontologies.makolab.com/gao/CompleteTowBar
+
+:CompleteTowBar a owl:Class ;
+	rdfs:subClassOf :SwanNeckTowBar ;
+	rdfs:label "complete tow bar"@en .
+# 
+# http://ontologies.makolab.com/gao/Connecting
+
+:Connecting a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "connecting"@en ;
+	skos:hiddenLabel "multimedia"@en .
+# 
+# http://ontologies.makolab.com/gao/CorneringFogLight
+
+:CorneringFogLight a owl:Class ;
+	rdfs:subClassOf :Foglamp ;
+	rdfs:label "cornering fog light "@en .
+# 
+# http://ontologies.makolab.com/gao/CourtesyLight
+
+:CourtesyLight a owl:Class ;
+	rdfs:subClassOf :Frontlight ;
+	rdfs:label "courtesy light"@en .
+# 
+# http://ontologies.makolab.com/gao/CruiseControl
+
+:CruiseControl a owl:Class ;
+	rdfs:subClassOf :ActiveSafetySystem ;
+	rdfs:label "cruise control"@en ;
+	skos:altLabel "autocruise"@en , "speed control"@en , "speed limiter"@en , "tempomat"@pl .
+# 
+# http://ontologies.makolab.com/gao/CupChassis
+
+:CupChassis a owl:Class ;
+	rdfs:subClassOf :InternalCarAccessory ;
+	rdfs:label "cup chassis"@en .
+# 
+# http://ontologies.makolab.com/gao/CupHolder
+
+:CupHolder a owl:Class ;
+	rdfs:subClassOf :StorageArea ;
+	rdfs:label "cup holder"@en .
+# 
+# http://ontologies.makolab.com/gao/DSC
+
+:DSC a owl:Class ;
+	rdfs:subClassOf :ActiveSafetySystem ;
+	rdfs:label "directional stability control"@en ;
+	skos:altLabel "DSC"@en .
+# 
+# http://ontologies.makolab.com/gao/DashboardIllumination
+
+:DashboardIllumination a owl:Class ;
+	rdfs:subClassOf :LightingElement ;
+	rdfs:label "dashboard illumination"@en .
+# 
+# http://ontologies.makolab.com/gao/DashboardOval
+
+:DashboardOval a owl:Class ;
+	rdfs:subClassOf :InteriorPresentation ;
+	rdfs:label "dashboard oval"@en .
+# 
+# http://ontologies.makolab.com/gao/DaytimeRunningLight
+
+:DaytimeRunningLight a owl:Class ;
+	rdfs:subClassOf :LightingElement ;
+	rdfs:label "daytime running light"@en .
+# 
+# http://ontologies.makolab.com/gao/DecorativeStrip
+
+:DecorativeStrip a owl:Class ;
+	rdfs:subClassOf :InteriorPresentation ;
+	rdfs:label "decorative strip"@en .
+# 
+# http://ontologies.makolab.com/gao/DefoggingRearWindow
+
+:DefoggingRearWindow a owl:Class ;
+	rdfs:subClassOf :RearWindow ;
+	rdfs:label "defogging rear window"@en .
+# 
+# http://ontologies.makolab.com/gao/DefrostFunction
+
+:DefrostFunction a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "defrost function"@en .
+# 
+# http://ontologies.makolab.com/gao/DefrostingRearWindow
+
+:DefrostingRearWindow a owl:Class ;
+	rdfs:subClassOf :RearWindow ;
+	rdfs:label "defrosting rear window"@en .
+# 
+# http://ontologies.makolab.com/gao/DigitalSpeedometer
+
+:DigitalSpeedometer a owl:Class ;
+	rdfs:subClassOf :Connecting ;
+	rdfs:label "digital speedometer"@en .
+# 
+# http://ontologies.makolab.com/gao/DisplayMultifunction
+
+:DisplayMultifunction a owl:Class ;
+	rdfs:subClassOf :Connecting ;
+	rdfs:label "display multifunction"@en .
+# 
+# http://ontologies.makolab.com/gao/Door
+
+:Door a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "door"@en .
+# 
+# http://ontologies.makolab.com/gao/DoorHandle
+
+:DoorHandle a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "door handle"@en .
+# 
+# http://ontologies.makolab.com/gao/DoorLocking
+
+:DoorLocking a owl:Class ;
+	rdfs:subClassOf :KeySystem ;
+	rdfs:label "door locking"@en .
+# 
+# http://ontologies.makolab.com/gao/DoorMirror
+
+:DoorMirror a owl:Class ;
+	rdfs:subClassOf :Mirror ;
+	rdfs:label "door mirror"@en ;
+	skos:altLabel "fender mirror"@en , "side view mirror"@en , "wing mirror"@en .
+# 
+# http://ontologies.makolab.com/gao/DoorMirrorCap
+
+:DoorMirrorCap a owl:Class ;
+	rdfs:subClassOf :ExternalCarAccessory ;
+	rdfs:label "door mirror cap"@en .
+# 
+# http://ontologies.makolab.com/gao/DoorOpenIndicator
+
+:DoorOpenIndicator a owl:Class ;
+	rdfs:subClassOf :KeySystem ;
+	rdfs:label "door open indicator"@en .
+# 
+# http://ontologies.makolab.com/gao/DoorSill
+
+:DoorSill a owl:Class ;
+	rdfs:subClassOf :Sill ;
+	rdfs:label "door sill"@en .
+# 
+# http://ontologies.makolab.com/gao/DoorStriping
+
+:DoorStriping a owl:Class ;
+	rdfs:subClassOf :ExteriorAppearance ;
+	rdfs:label "door striping"@en .
+# 
+# http://ontologies.makolab.com/gao/DrinkHolder
+
+:DrinkHolder a owl:Class ;
+	rdfs:subClassOf :StorageArea ;
+	rdfs:label "drink holder"@en .
+# 
+# http://ontologies.makolab.com/gao/DriverAirBag
+
+:DriverAirBag a owl:Class ;
+	rdfs:subClassOf :Airbag ;
+	rdfs:label "driver airbag"@en .
+# 
+# http://ontologies.makolab.com/gao/DualHorn
+
+:DualHorn a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "dual horn"@en .
+# 
+# http://ontologies.makolab.com/gao/EBA
+
+:EBA a owl:Class ;
+	rdfs:subClassOf :ActiveSafetySystem ;
+	rdfs:label "emergency brake assist"@en ;
+	skos:altLabel "EBA"@en .
+# 
+# http://ontologies.makolab.com/gao/EBD
+
+:EBD a owl:Class ;
+	rdfs:subClassOf :ActiveSafetySystem ;
+	rdfs:label "electronic brake distribution"@en ;
+	skos:altLabel "EBD"@en .
+# 
+# http://ontologies.makolab.com/gao/EBV
+
+:EBV a owl:Class ;
+	rdfs:subClassOf :ActiveSafetySystem ;
+	rdfs:label "electronic brakeforce distribution"@en ;
+	skos:altLabel "EBV"@en .
+# 
+# http://ontologies.makolab.com/gao/ESC
+
+:ESC a owl:Class ;
+	rdfs:subClassOf :ActiveSafetySystem ;
+	rdfs:label "electronic stability control"@en ;
+	skos:altLabel "ESC"@en .
+# 
+# http://ontologies.makolab.com/gao/ESP
+
+:ESP a owl:Class ;
+	rdfs:subClassOf :ActiveSafetySystem ;
+	rdfs:label "electronic stability programme"@en ;
+	skos:altLabel "ESP"@en .
+# 
+# http://ontologies.makolab.com/gao/ElectricCar
+
+:ElectricCar a owl:Class ;
+	rdfs:subClassOf :Car ;
+	rdfs:label "electric car"@en ;
+	skos:hiddenLabel "electric"@en .
+# 
+# http://ontologies.makolab.com/gao/ElectricLock
+
+:ElectricLock a owl:Class ;
+	rdfs:subClassOf :KeySystem ;
+	rdfs:label "electric lock"@en .
+# 
+# http://ontologies.makolab.com/gao/ElectricRearWindow
+
+:ElectricRearWindow a owl:Class ;
+	rdfs:subClassOf :RearWindow ;
+	rdfs:label "electric rear window"@en .
+# 
+# http://ontologies.makolab.com/gao/ElectricSunroof
+
+:ElectricSunroof a owl:Class ;
+	rdfs:subClassOf :Roof ;
+	rdfs:label "electric sunroof"@en .
+# 
+# http://ontologies.makolab.com/gao/ElectricWindow
+
+:ElectricWindow a owl:Class ;
+	rdfs:subClassOf :Window ;
+	rdfs:label "electric window"@en .
+# 
+# http://ontologies.makolab.com/gao/ElectricWingMirror
+
+:ElectricWingMirror a owl:Class ;
+	rdfs:subClassOf :DoorMirror ;
+	rdfs:label "electric wing mirror"@en ;
+	skos:altLabel "electric door mirror"@en ;
+	skos:hiddenLabel "electric mirror"@en .
+# 
+# http://ontologies.makolab.com/gao/ElectronicAntiStartSystem
+
+:ElectronicAntiStartSystem a owl:Class ;
+	rdfs:subClassOf :AntiIntruderSystem ;
+	rdfs:label "electronic anti-start system"@en .
+# 
+# http://ontologies.makolab.com/gao/ElementOfCarEquipement
+
+:ElementOfCarEquipement a owl:Class ;
+	rdfs:label "car specification and equipement"@en , "wyposażenie i specyfikacja samochodu"@pl ;
+	skos:altLabel "car specification"@en ;
+	skos:hiddenLabel "parts"@en .
+# 
+# http://ontologies.makolab.com/gao/EngineType
+
+:EngineType a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "engine type"@en ;
+	skos:closeMatch "https://schema.org/EngineSpecification"^^xsd:anyURI ;
+	skos:hiddenLabel "engine"@en , "engine specification"@en , "fuel type"@en .
+# 
+# http://ontologies.makolab.com/gao/EntryGuard
+
+:EntryGuard a owl:Class ;
+	rdfs:subClassOf :InternalCarAccessory ;
+	rdfs:label "entry guard"@en .
+# 
+# http://ontologies.makolab.com/gao/EnvelopeNet
+
+:EnvelopeNet a owl:Class ;
+	rdfs:subClassOf :Net ;
+	rdfs:label "envelope net"@en .
+# 
+# http://ontologies.makolab.com/gao/EscortLightFunction
+
+:EscortLightFunction a owl:Class ;
+	rdfs:subClassOf :VisibilityAndLighting ;
+	rdfs:label "escort light function"@en ;
+	skos:hiddenLabel "follow me home"@en .
+# 
+# http://ontologies.makolab.com/gao/ExteriorAppearance
+
+:ExteriorAppearance a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "exterior appearance"@en .
+# 
+# http://ontologies.makolab.com/gao/ExteriorBodyDecal
+
+:ExteriorBodyDecal a owl:Class ;
+	rdfs:subClassOf :ExternalCarAccessory ;
+	rdfs:label "exterior body decal"@en .
+# 
+# http://ontologies.makolab.com/gao/ExternalCarAccessory
+
+:ExternalCarAccessory a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "external car accessory"@en ;
+	skos:altLabel "exterior appearance"@en .
+# 
+# http://ontologies.makolab.com/gao/ExternalTemperatureSensor
+
+:ExternalTemperatureSensor a owl:Class ;
+	rdfs:subClassOf :Sensor ;
+	rdfs:label "external temperature sensor"@en .
+# 
+# http://ontologies.makolab.com/gao/ExtraTintedRearWindow
+
+:ExtraTintedRearWindow a owl:Class ;
+	rdfs:subClassOf :RearWindow ;
+	rdfs:label "extra tinted rear window"@en .
+# 
+# http://ontologies.makolab.com/gao/F1Style
+
+:F1Style a owl:Class ;
+	rdfs:subClassOf :ExternalCarAccessory ;
+	rdfs:label "F1 style"@en ;
+	skos:hiddenLabel "f1"@en .
+# 
+# http://ontologies.makolab.com/gao/FAP
+
+:FAP a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "FAP"@en .
+# 
+# http://ontologies.makolab.com/gao/FireExtinguisherKit
+
+:FireExtinguisherKit a owl:Class ;
+	rdfs:subClassOf :InternalCarAccessory ;
+	rdfs:label "fire extinguisher kit"@en .
+# 
+# http://ontologies.makolab.com/gao/FixedGlassRoof
+
+:FixedGlassRoof a owl:Class ;
+	rdfs:subClassOf :Roof ;
+	rdfs:label "fixed glass roof"@en .
+# 
+# http://ontologies.makolab.com/gao/FloorCover
+
+:FloorCover a owl:Class ;
+	rdfs:subClassOf :InteriorPresentation ;
+	rdfs:label "floor cover"@en .
+# 
+# http://ontologies.makolab.com/gao/FloorLighting
+
+:FloorLighting a owl:Class ;
+	rdfs:subClassOf :LightingElement ;
+	rdfs:label "floor lighting"@en .
+# 
+# http://ontologies.makolab.com/gao/FloorMat
+
+:FloorMat a owl:Class ;
+	rdfs:subClassOf :Mat ;
+	rdfs:label "floor mat"@en .
+# 
+# http://ontologies.makolab.com/gao/Foglamp
+
+:Foglamp a owl:Class ;
+	rdfs:subClassOf :LightingElement ;
+	rdfs:label "foglamp"@en .
+# 
+# http://ontologies.makolab.com/gao/FoldableBackseat
+
+:FoldableBackseat a owl:Class ;
+	rdfs:subClassOf :Seat ;
+	rdfs:label "foldable backseat"@en ;
+	skos:altLabel "folding rear seat"@en .
+# 
+# http://ontologies.makolab.com/gao/FoldableRearBench
+
+:FoldableRearBench a owl:Class ;
+	rdfs:subClassOf :Seat ;
+	rdfs:label "1/3 - 2/3 foldable rear bench"@en .
+# 
+# http://ontologies.makolab.com/gao/FrontAirBag
+
+:FrontAirBag a owl:Class ;
+	rdfs:subClassOf :Airbag ;
+	rdfs:label "front airbag"@en .
+# 
+# http://ontologies.makolab.com/gao/FrontAirDeflector
+
+:FrontAirDeflector a owl:Class ;
+	rdfs:subClassOf :AirDeflector ;
+	rdfs:label "front air deflector"@en .
+# 
+# http://ontologies.makolab.com/gao/FrontArmrest
+
+:FrontArmrest a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "front armrest"@en .
+# 
+# http://ontologies.makolab.com/gao/FrontBumper
+
+:FrontBumper a owl:Class ;
+	rdfs:subClassOf :Bumper ;
+	rdfs:label "front bumper"@en .
+# 
+# http://ontologies.makolab.com/gao/FrontElectricWindow
+
+:FrontElectricWindow a owl:Class ;
+	rdfs:subClassOf :ElectricWindow , :FrontWindow ;
+	rdfs:label "front electric windows"@en .
+# 
+# http://ontologies.makolab.com/gao/FrontFogLamp
+
+:FrontFogLamp a owl:Class ;
+	rdfs:subClassOf :Foglamp , :Frontlight ;
+	rdfs:label "front foglamp"@en .
+# 
+# http://ontologies.makolab.com/gao/FrontLEDLight
+
+:FrontLEDLight a owl:Class ;
+	rdfs:subClassOf :Frontlight ;
+	rdfs:label "front LED light"@en .
+# 
+# http://ontologies.makolab.com/gao/FrontMapLamp
+
+:FrontMapLamp a owl:Class ;
+	rdfs:subClassOf :Frontlight ;
+	rdfs:label "front map lamp"@en .
+# 
+# http://ontologies.makolab.com/gao/FrontMudFlap
+
+:FrontMudFlap a owl:Class ;
+	rdfs:subClassOf :MudGuard ;
+	rdfs:label "front mudflap"@en .
+# 
+# http://ontologies.makolab.com/gao/FrontMudGuard
+
+:FrontMudGuard a owl:Class ;
+	rdfs:subClassOf :MudGuard ;
+	rdfs:label "front mud guard"@en .
+# 
+# http://ontologies.makolab.com/gao/FrontSideBaffle
+
+:FrontSideBaffle a owl:Class ;
+	rdfs:subClassOf :InteriorPresentation ;
+	rdfs:label "front side baffles"@en .
+# 
+# http://ontologies.makolab.com/gao/FrontWindow
+
+:FrontWindow a owl:Class ;
+	rdfs:subClassOf :Window ;
+	rdfs:label "front window"@en .
+# 
+# http://ontologies.makolab.com/gao/Frontlight
+
+:Frontlight a owl:Class ;
+	rdfs:subClassOf :LightingElement ;
+	rdfs:label "frontlight"@en ;
+	skos:altLabel "headlamp"@en .
+# 
+# http://ontologies.makolab.com/gao/FuelCap
+
+:FuelCap a owl:Class ;
+	rdfs:subClassOf :ExteriorAppearance ;
+	rdfs:label "fuel cap"@en .
+# 
+# http://ontologies.makolab.com/gao/FunctionOnBoardComputer
+
+:FunctionOnBoardComputer a owl:Class ;
+	rdfs:subClassOf :Connecting ;
+	rdfs:label "function on-board computer"@en ;
+	skos:altLabel "instrument panel"@en ;
+	skos:hiddenLabel "Fascia"@en , "dashbord"@en .
+# 
+# http://ontologies.makolab.com/gao/GTLineMirrorCasing
+
+:GTLineMirrorCasing a owl:Class ;
+	rdfs:subClassOf :MirrorCasing ;
+	rdfs:label "GT-Line mirror casing"@en .
+# 
+# http://ontologies.makolab.com/gao/GTLineRearSpoiler
+
+:GTLineRearSpoiler a owl:Class ;
+	rdfs:subClassOf :RearSpoiler ;
+	rdfs:label "GT-Line rear spoiler"@en .
+# 
+# http://ontologies.makolab.com/gao/GearKnob
+
+:GearKnob a owl:Class ;
+	rdfs:subClassOf :InteriorPresentation ;
+	rdfs:label "gear knob"@en .
+# 
+# http://ontologies.makolab.com/gao/GlazedBulkhead
+
+:GlazedBulkhead a owl:Class ;
+	rdfs:subClassOf :ExteriorAppearance ;
+	rdfs:label "glazed bulkhead"@en .
+# 
+# http://ontologies.makolab.com/gao/GlazedTailgate
+
+:GlazedTailgate a owl:Class ;
+	rdfs:subClassOf :Tailgate ;
+	rdfs:label "glazed tailgate"@en .
+# 
+# http://ontologies.makolab.com/gao/Glovebox
+
+:Glovebox a owl:Class ;
+	rdfs:subClassOf :StorageArea ;
+	rdfs:label "glovebox"@en .
+# 
+# http://ontologies.makolab.com/gao/GloveboxCover
+
+:GloveboxCover a owl:Class ;
+	rdfs:subClassOf :InteriorPresentation ;
+	rdfs:label "glovebox cover"@en .
+# 
+# http://ontologies.makolab.com/gao/GloveboxLight
+
+:GloveboxLight a owl:Class ;
+	rdfs:subClassOf :LightingElement ;
+	rdfs:label "glovebox light"@en .
+# 
+# http://ontologies.makolab.com/gao/Grease
+
+:Grease a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "grease"@en .
+# 
+# http://ontologies.makolab.com/gao/GrillTrim
+
+:GrillTrim a owl:Class ;
+	rdfs:subClassOf :ExteriorAppearance ;
+	rdfs:label "grill trim"@en .
+# 
+# http://ontologies.makolab.com/gao/Grille
+
+:Grille a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "grille"@en .
+# 
+# http://ontologies.makolab.com/gao/GroundLighting
+
+:GroundLighting a owl:Class ;
+	rdfs:subClassOf :LightingElement ;
+	rdfs:label "ground lighting"@en .
+# 
+# http://ontologies.makolab.com/gao/HSA
+
+:HSA a owl:Class ;
+	rdfs:subClassOf :ActiveSafetySystem ;
+	rdfs:label "hill-start assist"@en ;
+	skos:altLabel "HSA"@en , "hill assist"@en .
+# 
+# http://ontologies.makolab.com/gao/Halogenfrontheadlight
+
+:Halogenfrontheadlight a owl:Class ;
+	rdfs:subClassOf :Frontlight ;
+	rdfs:label "halogen front headlight"@en .
+# 
+# http://ontologies.makolab.com/gao/HandbrakeConsole
+
+:HandbrakeConsole a owl:Class ;
+	rdfs:subClassOf :InteriorPresentation ;
+	rdfs:label "handbrake console"@en .
+# 
+# http://ontologies.makolab.com/gao/HandsFreeTelephony
+
+:HandsFreeTelephony a owl:Class ;
+	rdfs:subClassOf :Connecting ;
+	rdfs:label "hands-free telephony"@en ;
+	skos:altLabel "hands-free phone system"@en ;
+	skos:hiddenLabel "hands free"@en .
+# 
+# http://ontologies.makolab.com/gao/HeadlampAutoActivated
+
+:HeadlampAutoActivated a owl:Class ;
+	rdfs:subClassOf :Frontlight ;
+	rdfs:label "headlamp auto-activated"@en .
+# 
+# http://ontologies.makolab.com/gao/HeadlightAlarm
+
+:HeadlightAlarm a owl:Class ;
+	rdfs:subClassOf :AntiIntruderSystem ;
+	rdfs:label "headlight alarm"@en .
+# 
+# http://ontologies.makolab.com/gao/HeadlightWasher
+
+:HeadlightWasher a owl:Class ;
+	rdfs:subClassOf :VisibilityAndLighting ;
+	rdfs:label "headlight washer"@en .
+# 
+# http://ontologies.makolab.com/gao/Headrest
+
+:Headrest a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "headrest"@en .
+# 
+# http://ontologies.makolab.com/gao/HeatedRearScreen
+
+:HeatedRearScreen a owl:Class ;
+	rdfs:subClassOf :RearWindow ;
+	rdfs:label "heated rear screen"@en .
+# 
+# http://ontologies.makolab.com/gao/HeatedSeat
+
+:HeatedSeat a owl:Class ;
+	rdfs:subClassOf :Seat ;
+	rdfs:label "heated seat"@en .
+# 
+# http://ontologies.makolab.com/gao/Heating
+
+:Heating a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "heating"@en .
+# 
+# http://ontologies.makolab.com/gao/HubCap
+
+:HubCap a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "hub cap"@en , "kołpak"@pl .
+# 
+# http://ontologies.makolab.com/gao/Immobilizer
+
+:Immobilizer a owl:Class ;
+	rdfs:subClassOf :AntiIntruderSystem ;
+	rdfs:label "immobilizer"@en ;
+	skos:hiddenLabel "anti-theft system"@en .
+# 
+# http://ontologies.makolab.com/gao/InnovativeSolution
+
+:InnovativeSolution a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "innovative solution"@en ;
+	skos:altLabel "innovation"@en .
+# 
+# http://ontologies.makolab.com/gao/InteriorPresentation
+
+:InteriorPresentation a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "interior presentation"@en .
+# 
+# http://ontologies.makolab.com/gao/InternalCarAccessory
+
+:InternalCarAccessory a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "internal car accessory"@en ;
+	skos:altLabel "accessories"@en , "interior"@en .
+# 
+# http://ontologies.makolab.com/gao/Isofix
+
+:Isofix a owl:Class ;
+	rdfs:subClassOf :PassiveSafetySystem ;
+	rdfs:label "ISOFIX"@en , "isofix system in rear side seats"@en .
+# 
+# http://ontologies.makolab.com/gao/KeyCard
+
+:KeyCard a owl:Class ;
+	rdfs:subClassOf :KeySystem ;
+	rdfs:label "key card"@en .
+# 
+# http://ontologies.makolab.com/gao/KeyLessSystem
+
+:KeyLessSystem a owl:Class ;
+	rdfs:subClassOf :KeySystem ;
+	rdfs:label "key less system"@en .
+# 
+# http://ontologies.makolab.com/gao/KeySystem
+
+:KeySystem a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "key system"@en .
+# 
+# http://ontologies.makolab.com/gao/LEDRearLamp
+
+:LEDRearLamp a owl:Class ;
+	rdfs:subClassOf :RearLight ;
+	rdfs:label "LED rear lamps"@en .
+# 
+# http://ontologies.makolab.com/gao/LSD
+
+:LSD a owl:Class ;
+	rdfs:subClassOf :ActiveSafetySystem ;
+	rdfs:label "limited slip differential"@en ;
+	skos:altLabel "LSD"@en .
+# 
+# http://ontologies.makolab.com/gao/Lever
+
+:Lever a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "lever"@en .
+# 
+# http://ontologies.makolab.com/gao/LightBox
+
+:LightBox a owl:Class ;
+	rdfs:subClassOf :InternalCarAccessory ;
+	rdfs:label "light box"@en .
+# 
+# http://ontologies.makolab.com/gao/LightingElement
+
+:LightingElement a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "lighting element"@en ;
+	skos:hiddenLabel "light"@en , "lighting"@en .
+# 
+# http://ontologies.makolab.com/gao/LuggageComparment
+
+:LuggageComparment a owl:Class ;
+	rdfs:subClassOf :StorageArea ;
+	rdfs:label "luggage compartment"@en ;
+	skos:altLabel "luggage space"@en .
+# 
+# http://ontologies.makolab.com/gao/LuggageRetainingNet
+
+:LuggageRetainingNet a owl:Class ;
+	rdfs:subClassOf :ExternalCarAccessory , :Net ;
+	rdfs:label "luggage retaining net"@en .
+# 
+# http://ontologies.makolab.com/gao/MP3
+
+:MP3 a owl:Class ;
+	rdfs:subClassOf :AudioSystemElement ;
+	rdfs:label "mp3"@en .
+# 
+# http://ontologies.makolab.com/gao/ManualAirConditioning
+
+:ManualAirConditioning a owl:Class ;
+	rdfs:subClassOf :AirConditioning ;
+	rdfs:label "manual air conditioning"@en ;
+	skos:altLabel "manual air-conditioning"@en .
+# 
+# http://ontologies.makolab.com/gao/ManualDoorMirror
+
+:ManualDoorMirror a owl:Class ;
+	rdfs:subClassOf :DoorMirror ;
+	rdfs:label "manual door mirrors"@en .
+# 
+# http://ontologies.makolab.com/gao/Mat
+
+:Mat a owl:Class ;
+	rdfs:subClassOf :InternalCarAccessory ;
+	rdfs:label "mat"@en .
+# 
+# http://ontologies.makolab.com/gao/MetalSheetSkidPlate
+
+:MetalSheetSkidPlate a owl:Class ;
+	rdfs:subClassOf :UnderEngineProtection ;
+	rdfs:label "metal sheet skid plate"@en .
+# 
+# http://ontologies.makolab.com/gao/MetallicPaint
+
+:MetallicPaint a owl:Class ;
+	rdfs:subClassOf :Color ;
+	rdfs:label "metallic paint"@en .
+# 
+# http://ontologies.makolab.com/gao/Mirror
+
+:Mirror a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "mirror"@en .
+# 
+# http://ontologies.makolab.com/gao/MirrorCasing
+
+:MirrorCasing a owl:Class ;
+	rdfs:subClassOf :ExternalCarAccessory ;
+	rdfs:label "mirror casing"@en .
+# 
+# http://ontologies.makolab.com/gao/MobilityCar
+
+:MobilityCar a owl:Class ;
+	rdfs:subClassOf :Car ;
+	rdfs:label "mobility car"@en ;
+	skos:altLabel "motability"@en ;
+	skos:hiddenLabel "motobility"@en .
+# 
+# http://ontologies.makolab.com/gao/MonitorScreen
+
+:MonitorScreen a owl:Class ;
+	rdfs:subClassOf :Connecting ;
+	rdfs:label "monitor screen"@en ;
+	skos:altLabel "multimedia"@en .
+# 
+# http://ontologies.makolab.com/gao/Motorcycle
+
+:Motorcycle a owl:Class ;
+	rdfs:subClassOf :Vehicle ;
+	rdfs:comment "A motorcycle or motorbike is a single-track, two-wheeled motor vehicle."@en ;
+	rdfs:label "motorcycle"@en ;
+	skos:exactMatch "https://schema.org/Motorcycle"^^xsd:anyURI .
+# 
+# http://ontologies.makolab.com/gao/MotorizedBicycle
+
+:MotorizedBicycle a owl:Class ;
+	rdfs:subClassOf :Vehicle ;
+	rdfs:comment "A motorized bicycle is a bicycle with an attached motor used to power the vehicle, or to assist with pedaling."@en ;
+	rdfs:label "motorized bicycle"@en ;
+	skos:exactMatch "https://schema.org/MotorizedBicycle"^^xsd:anyURI .
+# 
+# http://ontologies.makolab.com/gao/MudFlap
+
+:MudFlap a owl:Class ;
+	rdfs:subClassOf :MudGuard ;
+	rdfs:label "mud flap"@en .
+# 
+# http://ontologies.makolab.com/gao/MudGuard
+
+:MudGuard a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "mud guard"@en .
+# 
+# http://ontologies.makolab.com/gao/Navigation
+
+:Navigation a owl:Class ;
+	rdfs:subClassOf :Connecting ;
+	rdfs:label "navigation"@en .
+# 
+# http://ontologies.makolab.com/gao/Navigator
+
+:Navigator a owl:Class ;
+	rdfs:subClassOf :InternalCarAccessory ;
+	rdfs:label "navigator"@en .
+# 
+# http://ontologies.makolab.com/gao/Net
+
+:Net a owl:Class ;
+	rdfs:subClassOf :InternalCarAccessory ;
+	rdfs:label "net"@en .
+# 
+# http://ontologies.makolab.com/gao/NoteBox
+
+:NoteBox a owl:Class ;
+	rdfs:subClassOf :InternalCarAccessory ;
+	rdfs:label "note box"@en .
+# 
+# http://ontologies.makolab.com/gao/OnBoardComputer
+
+:OnBoardComputer a owl:Class ;
+	rdfs:subClassOf :Connecting ;
+	rdfs:label "on-board computer"@en .
+# 
+# http://ontologies.makolab.com/gao/OpticHeadlamp
+
+:OpticHeadlamp a owl:Class ;
+	rdfs:subClassOf :Frontlight ;
+	rdfs:label "optic headlamp"@en .
+# 
+# http://ontologies.makolab.com/gao/OrganiserBox
+
+:OrganiserBox a owl:Class ;
+	rdfs:subClassOf :InternalCarAccessory ;
+	rdfs:label "organiser box"@en .
+# 
+# http://ontologies.makolab.com/gao/ParkDistanceControlSensor
+
+:ParkDistanceControlSensor a owl:Class ;
+	rdfs:subClassOf :Sensor ;
+	rdfs:label "park distance control sensor"@en ;
+	skos:altLabel "parking sensor"@en .
+# 
+# http://ontologies.makolab.com/gao/ParkingBrake
+
+:ParkingBrake a owl:Class ;
+	rdfs:subClassOf :Brake ;
+	rdfs:label "parking brake"@en .
+# 
+# http://ontologies.makolab.com/gao/PartitionGrille
+
+:PartitionGrille a owl:Class ;
+	rdfs:subClassOf :Grille ;
+	rdfs:label "kratka"@en , "partition grille"@en .
+# 
+# http://ontologies.makolab.com/gao/PassangareCar
+
+:PassangareCar a owl:Class ;
+	rdfs:subClassOf :Car ;
+	rdfs:label "passenger  car"@en ;
+	skos:altLabel "PC"@en .
+# 
+# http://ontologies.makolab.com/gao/PassengerAirBag
+
+:PassengerAirBag a owl:Class ;
+	rdfs:subClassOf :Airbag ;
+	rdfs:label "passenger airbag"@en .
+# 
+# http://ontologies.makolab.com/gao/PassengerSeat
+
+:PassengerSeat a owl:Class ;
+	rdfs:subClassOf :Seat ;
+	rdfs:label "passenger seat"@en .
+# 
+# http://ontologies.makolab.com/gao/PassengerSunVisor
+
+:PassengerSunVisor a owl:Class ;
+	rdfs:subClassOf :VisibilityAndLighting ;
+	rdfs:label "passenger sun visor"@en .
+# 
+# http://ontologies.makolab.com/gao/PassengerVanityMirror
+
+:PassengerVanityMirror a owl:Class ;
+	rdfs:subClassOf :Mirror ;
+	rdfs:label "passenger vanity mirror"@en .
+# 
+# http://ontologies.makolab.com/gao/PassiveSafetySystem
+
+:PassiveSafetySystem a owl:Class ;
+	rdfs:subClassOf :ActiveOrPassiveSafetySystem ;
+	rdfs:comment "urządzenie, które minimalizuje skutki wypadku ze szczególnym uwzględnieniem zdrowia pasażerów i innych osób uczestniczących w danym zdarzeniu"@pl ;
+	rdfs:label "passive safety system"@en .
+# 
+# http://ontologies.makolab.com/gao/PickupTruck
+
+:PickupTruck a owl:Class ;
+	rdfs:subClassOf :Car ;
+	rdfs:label "pickup truck"@en ;
+	skos:altLabel "PU"@en .
+# 
+# http://ontologies.makolab.com/gao/PlasticSkidPlate
+
+:PlasticSkidPlate a owl:Class ;
+	rdfs:subClassOf :UnderEngineProtection ;
+	rdfs:label "plastic skid plate"@en .
+# 
+# http://ontologies.makolab.com/gao/PlipKey
+
+:PlipKey a owl:Class ;
+	rdfs:subClassOf :KeySystem ;
+	rdfs:label "plip key"@en .
+# 
+# http://ontologies.makolab.com/gao/PneumaticAirSuspension
+
+:PneumaticAirSuspension a owl:Class ;
+	rdfs:subClassOf :Suspension ;
+	rdfs:label "pneumatic air suspension"@en .
+# 
+# http://ontologies.makolab.com/gao/PollenFilter
+
+:PollenFilter a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "pollen filter"@en .
+# 
+# http://ontologies.makolab.com/gao/PortableDeviceSystem
+
+:PortableDeviceSystem a owl:Class ;
+	rdfs:subClassOf :Connecting ;
+	rdfs:label "portable device system"@en .
+# 
+# http://ontologies.makolab.com/gao/PortableStorageUnit
+
+:PortableStorageUnit a owl:Class ;
+	rdfs:subClassOf :InternalCarAccessory ;
+	rdfs:label "portable storage unit"@en .
+# 
+# http://ontologies.makolab.com/gao/QuickReleaseTowBar
+
+:QuickReleaseTowBar a owl:Class ;
+	rdfs:subClassOf :TowBar ;
+	rdfs:label "quick release tow bar"@en .
+# 
+# http://ontologies.makolab.com/gao/RCAInput
+
+:RCAInput a owl:Class ;
+	rdfs:subClassOf :Connecting ;
+	rdfs:label "RCA input"@en .
+# 
+# http://ontologies.makolab.com/gao/RLink
+
+:RLink a owl:Class ;
+	rdfs:subClassOf :Connecting ;
+	rdfs:label "r-link"@en ;
+	skos:altLabel "rlink"@en ;
+	skos:hiddenLabel "rilink"@en .
+# 
+# http://ontologies.makolab.com/gao/RPlug
+
+:RPlug a owl:Class ;
+	rdfs:subClassOf :Connecting ;
+	rdfs:label "R-plug"@en .
+# 
+# http://ontologies.makolab.com/gao/RadiatorGrille
+
+:RadiatorGrille a owl:Class ;
+	rdfs:subClassOf :Grille ;
+	rdfs:label "osłona chłodnicy"@pl , "radiator grille"@en .
+# 
+# http://ontologies.makolab.com/gao/Radio
+
+:Radio a owl:Class ;
+	rdfs:subClassOf :AudioSystemElement ;
+	rdfs:label "radio"@en .
+# 
+# http://ontologies.makolab.com/gao/RearBumper
+
+:RearBumper a owl:Class ;
+	rdfs:subClassOf :Bumper ;
+	rdfs:label "rear bumper"@en .
+# 
+# http://ontologies.makolab.com/gao/RearCurtainAirbag
+
+:RearCurtainAirbag a owl:Class ;
+	rdfs:subClassOf :Airbag ;
+	rdfs:label "rear curtain airbag"@en .
+# 
+# http://ontologies.makolab.com/gao/RearElectricWindow
+
+:RearElectricWindow a owl:Class ;
+	rdfs:subClassOf :RearWindow ;
+	rdfs:label "rear electric window"@en .
+# 
+# http://ontologies.makolab.com/gao/RearLight
+
+:RearLight a owl:Class ;
+	rdfs:subClassOf :LightingElement ;
+	rdfs:label "rear light"@en .
+# 
+# http://ontologies.makolab.com/gao/RearMudGuard
+
+:RearMudGuard a owl:Class ;
+	rdfs:subClassOf :MudGuard ;
+	rdfs:label "rear mud guard"@en .
+# 
+# http://ontologies.makolab.com/gao/RearParkingDistanceControl
+
+:RearParkingDistanceControl a owl:Class ;
+	rdfs:subClassOf :Sensor ;
+	rdfs:label "rear parking distance control"@en .
+# 
+# http://ontologies.makolab.com/gao/RearParkingSensor
+
+:RearParkingSensor a owl:Class ;
+	rdfs:subClassOf :ParkDistanceControlSensor ;
+	rdfs:label "rear parking sensor"@en ;
+	skos:altLabel "rear parking distance control"@en ;
+	skos:hiddenLabel "rear sensor"@en .
+# 
+# http://ontologies.makolab.com/gao/RearSkidPanel
+
+:RearSkidPanel a owl:Class ;
+	rdfs:subClassOf :ExternalCarAccessory ;
+	rdfs:label "rear skid panel"@en .
+# 
+# http://ontologies.makolab.com/gao/RearSpoiler
+
+:RearSpoiler a owl:Class ;
+	rdfs:subClassOf :Spoiler ;
+	rdfs:label "rear spoiler"@en .
+# 
+# http://ontologies.makolab.com/gao/RearWindow
+
+:RearWindow a owl:Class ;
+	rdfs:subClassOf :Window ;
+	rdfs:label "rear window"@en .
+# 
+# http://ontologies.makolab.com/gao/RearWindowWiper
+
+:RearWindowWiper a owl:Class ;
+	rdfs:subClassOf :Wiper ;
+	rdfs:label "rear window wiper"@en ;
+	skos:altLabel "rear screen wiper"@en .
+# 
+# http://ontologies.makolab.com/gao/ReinforcedSuspension
+
+:ReinforcedSuspension a owl:Class ;
+	rdfs:subClassOf :Suspension ;
+	rdfs:label "reinforced suspension"@en .
+# 
+# http://ontologies.makolab.com/gao/RemoteFoldableKey
+
+:RemoteFoldableKey a owl:Class ;
+	rdfs:subClassOf :KeySystem ;
+	rdfs:label "remote foldable key"@en .
+# 
+# http://ontologies.makolab.com/gao/RemoveGlassSunroof
+
+:RemoveGlassSunroof a owl:Class ;
+	rdfs:subClassOf :Roof ;
+	rdfs:label "remove glass sunroof"@en .
+# 
+# http://ontologies.makolab.com/gao/ReplacementKey
+
+:ReplacementKey a owl:Class ;
+	rdfs:subClassOf :KeySystem ;
+	rdfs:label "replacement key"@en .
+# 
+# http://ontologies.makolab.com/gao/Reverseparkingsensor
+
+:Reverseparkingsensor a owl:Class ;
+	rdfs:subClassOf :ParkDistanceControlSensor ;
+	rdfs:label "reverse parking sensor"@en .
+# 
+# http://ontologies.makolab.com/gao/Rim
+
+:Rim a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:comment """The terms wheel and rim are often used synonymously, as in decorative wheels being called rims. Used broadly, or used figuratively, the word rim can mean the outer edge of any circular object. Some authors are careful to use rim for only the outer portion of a wheel, where the tire mounts, just as the rim of a coffee cup or a meteor crater does not refer to the entire object. One engineering text says \"alloy wheels [are] often incorrectly called aluminum rims\". Others use rim to mean the entire metal part to which the tire mounts, because the rim and the wheel are often cast or stamped from a single piece of metal instead of being distinct as with wire wheels. At the same time, \"wheel\" may refer to the entire rotating assembly, including the tire.
+
+WIKI"""@en ;
+	rdfs:label "rim"@en .
+# 
+# http://ontologies.makolab.com/gao/Roof
+
+:Roof a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "roof"@en .
+# 
+# http://ontologies.makolab.com/gao/RoofBar
+
+:RoofBar a owl:Class ;
+	rdfs:subClassOf :ExteriorAppearance ;
+	rdfs:label "roof bar"@en ;
+	skos:altLabel "roof rack"@en .
+# 
+# http://ontologies.makolab.com/gao/RoofBox
+
+:RoofBox a owl:Class ;
+	rdfs:subClassOf :ExternalCarAccessory ;
+	rdfs:label "roof box"@en .
+# 
+# http://ontologies.makolab.com/gao/RoofGrabHandle
+
+:RoofGrabHandle a owl:Class ;
+	rdfs:subClassOf :InteriorPresentation ;
+	rdfs:label "roof grab handle"@en .
+# 
+# http://ontologies.makolab.com/gao/RoofLight
+
+:RoofLight a owl:Class ;
+	rdfs:subClassOf :LightingElement ;
+	rdfs:label "roof light"@en .
+# 
+# http://ontologies.makolab.com/gao/RoofMountedBicycleCarrier
+
+:RoofMountedBicycleCarrier a owl:Class ;
+	rdfs:subClassOf :BicycleCarrier ;
+	rdfs:label "roof mounted bicycle carrier"@en .
+# 
+# http://ontologies.makolab.com/gao/RoofRail
+
+:RoofRail a owl:Class ;
+	rdfs:subClassOf :ExternalCarAccessory ;
+	rdfs:label "roof rail"@en .
+# 
+# http://ontologies.makolab.com/gao/RubberFloorMat
+
+:RubberFloorMat a owl:Class ;
+	rdfs:subClassOf :FloorMat ;
+	rdfs:label "rubber floor mat"@en .
+# 
+# http://ontologies.makolab.com/gao/SANDEROSwanNeckTowBar
+
+:SANDEROSwanNeckTowBar a owl:Class ;
+	rdfs:subClassOf :SwanNeckTowBar ;
+	rdfs:label "Sandero swan neck towbar"@en .
+# 
+# http://ontologies.makolab.com/gao/STEPWAYSwanNeckTowBar
+
+:STEPWAYSwanNeckTowBar a owl:Class ;
+	rdfs:subClassOf :SwanNeckTowBar ;
+	rdfs:label "stepway swan neck tow bar"@en .
+# 
+# http://ontologies.makolab.com/gao/Safety
+
+:Safety a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "safety"@en ;
+	skos:hiddenLabel "safely"@en , "sfety"@en .
+# 
+# http://ontologies.makolab.com/gao/SatelliteRadioControl
+
+:SatelliteRadioControl a owl:Class ;
+	rdfs:subClassOf :Connecting ;
+	rdfs:label "satellite radio control"@en .
+# 
+# http://ontologies.makolab.com/gao/SatinChromeAppearancePaint
+
+:SatinChromeAppearancePaint a owl:Class ;
+	rdfs:subClassOf :Color ;
+	rdfs:label "satin chrome appearance paint"@en .
+# 
+# http://ontologies.makolab.com/gao/Seat
+
+:Seat a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "seat"@en .
+# 
+# http://ontologies.makolab.com/gao/SeatCover
+
+:SeatCover a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "seat cover"@en .
+# 
+# http://ontologies.makolab.com/gao/Seatbelt
+
+:Seatbelt a owl:Class ;
+	rdfs:subClassOf :PassiveSafetySystem ;
+	rdfs:label "seatbelt"@en .
+# 
+# http://ontologies.makolab.com/gao/Sensor
+
+:Sensor a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "sensor"@en .
+# 
+# http://ontologies.makolab.com/gao/SevenSeater
+
+:SevenSeater a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "7 seater"@en ;
+	skos:altLabel "seven seater"@en .
+# 
+# http://ontologies.makolab.com/gao/SideAirBag
+
+:SideAirBag a owl:Class ;
+	rdfs:subClassOf :Airbag ;
+	rdfs:label "side airbag"@en .
+# 
+# http://ontologies.makolab.com/gao/SideImpactBeam
+
+:SideImpactBeam a owl:Class ;
+	rdfs:subClassOf :PassiveSafetySystem ;
+	rdfs:label "side impact beam"@en , "wzmocnienie boczne"@pl ;
+	skos:hiddenLabel "anti-intrusion bar"@en , "anti-intrusion beam"@en .
+# 
+# http://ontologies.makolab.com/gao/SideProtector
+
+:SideProtector a owl:Class ;
+	rdfs:subClassOf :ExternalCarAccessory ;
+	rdfs:label "side protector"@en .
+# 
+# http://ontologies.makolab.com/gao/SideSill
+
+:SideSill a owl:Class ;
+	rdfs:subClassOf :Sill ;
+	rdfs:label "side sill"@en .
+# 
+# http://ontologies.makolab.com/gao/SideSkirtCover
+
+:SideSkirtCover a owl:Class ;
+	rdfs:subClassOf :ExteriorAppearance ;
+	rdfs:label "side skirt cover"@en .
+# 
+# http://ontologies.makolab.com/gao/SideStep
+
+:SideStep a owl:Class ;
+	rdfs:subClassOf :ExternalCarAccessory ;
+	rdfs:label "side step"@en .
+# 
+# http://ontologies.makolab.com/gao/Sill
+
+:Sill a owl:Class ;
+	rdfs:subClassOf :ExternalCarAccessory ;
+	rdfs:label "sill"@en .
+# 
+# http://ontologies.makolab.com/gao/SillProtection
+
+:SillProtection a owl:Class ;
+	rdfs:subClassOf :Sill ;
+	rdfs:label "sill protection"@en .
+# 
+# http://ontologies.makolab.com/gao/SkiCarrierAdaptor
+
+:SkiCarrierAdaptor a owl:Class ;
+	rdfs:subClassOf :ExternalCarAccessory ;
+	rdfs:label "ski carrier adaptor"@en .
+# 
+# http://ontologies.makolab.com/gao/SkidPanel
+
+:SkidPanel a owl:Class ;
+	rdfs:subClassOf :ExternalCarAccessory ;
+	rdfs:comment """A skid plate is an abrasion-resistant material affixed to the underside of a vehicle to prevent damage to the underside when contact is made with the ground.
+
+Skid plates may be used on off-road vehicles and lowered vehicles to prevent damage to the underside. Fake skid plates are also added to vehicles for an off-road look.
+
+WIKI"""@en ;
+	rdfs:label "skid panel"@en .
+# 
+# http://ontologies.makolab.com/gao/SkidPlate
+
+:SkidPlate a owl:Class ;
+	rdfs:subClassOf :ExteriorAppearance ;
+	rdfs:label "skid plate"@en .
+# 
+# http://ontologies.makolab.com/gao/SlidingDoor
+
+:SlidingDoor a owl:Class ;
+	rdfs:subClassOf :Door ;
+	rdfs:label "sliding door"@en .
+# 
+# http://ontologies.makolab.com/gao/SmokeColoredRearWindow
+
+:SmokeColoredRearWindow a owl:Class ;
+	rdfs:subClassOf :RearWindow ;
+	rdfs:label "smoke-colored rear window"@en .
+# 
+# http://ontologies.makolab.com/gao/SmokersKit
+
+:SmokersKit a owl:Class ;
+	rdfs:subClassOf :InternalCarAccessory ;
+	rdfs:label "smoker's kit"@en .
+# 
+# http://ontologies.makolab.com/gao/SmoothGlassHeadlight
+
+:SmoothGlassHeadlight a owl:Class ;
+	rdfs:subClassOf :Frontlight ;
+	rdfs:label "smooth glass headlight"@en .
+# 
+# http://ontologies.makolab.com/gao/Socket12V
+
+:Socket12V a owl:Class ;
+	rdfs:subClassOf :InternalCarAccessory ;
+	rdfs:label "socket 12V"@en .
+# 
+# http://ontologies.makolab.com/gao/SolarFilm
+
+:SolarFilm a owl:Class ;
+	rdfs:subClassOf :InternalCarAccessory ;
+	rdfs:label "solar film"@en .
+# 
+# http://ontologies.makolab.com/gao/Sound3D
+
+:Sound3D a owl:Class ;
+	rdfs:subClassOf :AudioSystemElement ;
+	rdfs:label "3D sound"@en .
+# 
+# http://ontologies.makolab.com/gao/SoundSystem
+
+:SoundSystem a owl:Class ;
+	rdfs:subClassOf :AudioSystemElement ;
+	rdfs:label "sound system"@en .
+# 
+# http://ontologies.makolab.com/gao/SpareWheel
+
+:SpareWheel a owl:Class ;
+	rdfs:subClassOf :Wheel ;
+	rdfs:label "spare wheel"@en .
+# 
+# http://ontologies.makolab.com/gao/SpareWheelCarrier
+
+:SpareWheelCarrier a owl:Class ;
+	rdfs:subClassOf :InternalCarAccessory ;
+	rdfs:label "spare wheel carrier"@en .
+# 
+# http://ontologies.makolab.com/gao/Speaker
+
+:Speaker a owl:Class ;
+	rdfs:subClassOf :AudioSystemElement ;
+	rdfs:label "speaker"@en .
+# 
+# http://ontologies.makolab.com/gao/Spoiler
+
+:Spoiler a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "spoiler"@en .
+# 
+# http://ontologies.makolab.com/gao/SportCar
+
+:SportCar a owl:Class ;
+	rdfs:subClassOf :Car ;
+	rdfs:label "sport car"@en ;
+	skos:hiddenLabel "GT"@en .
+# 
+# http://ontologies.makolab.com/gao/SportUtilityVehicle
+
+:SportUtilityVehicle a owl:Class ;
+	rdfs:subClassOf :Car ;
+	rdfs:label "sport utility vehicle"@en ;
+	skos:altLabel "SUV"@en .
+# 
+# http://ontologies.makolab.com/gao/StabilizerAssistedMovements
+
+:StabilizerAssistedMovements a owl:Class ;
+	rdfs:subClassOf :ActiveSafetySystem ;
+	rdfs:label "stabilizer-assisted movements"@en .
+# 
+# http://ontologies.makolab.com/gao/StartStopButton
+
+:StartStopButton a owl:Class ;
+	rdfs:subClassOf :KeySystem ;
+	rdfs:label "start/stop button"@en .
+# 
+# http://ontologies.makolab.com/gao/StartingCard
+
+:StartingCard a owl:Class ;
+	rdfs:subClassOf :KeySystem ;
+	rdfs:label "starting card"@en .
+# 
+# http://ontologies.makolab.com/gao/SteelWheel
+
+:SteelWheel a owl:Class ;
+	rdfs:subClassOf :Wheel ;
+	rdfs:label "steel wheel"@en .
+# 
+# http://ontologies.makolab.com/gao/SteeringColumn
+
+:SteeringColumn a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "steering column"@en .
+# 
+# http://ontologies.makolab.com/gao/SteeringType
+
+:SteeringType a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "steering type"@en .
+# 
+# http://ontologies.makolab.com/gao/SteeringWheel
+
+:SteeringWheel a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "steering wheel"@en .
+# 
+# http://ontologies.makolab.com/gao/SteeringWheelMountedControl
+
+:SteeringWheelMountedControl a owl:Class ;
+	rdfs:subClassOf :Connecting ;
+	rdfs:label "steering wheel-mounted control"@en .
+# 
+# http://ontologies.makolab.com/gao/SteeringWheelTrim
+
+:SteeringWheelTrim a owl:Class ;
+	rdfs:subClassOf :InternalCarAccessory ;
+	rdfs:label "steering wheel trim"@en .
+# 
+# http://ontologies.makolab.com/gao/StorageArea
+
+:StorageArea a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "storage area"@en ;
+	skos:altLabel "storage space"@en .
+# 
+# http://ontologies.makolab.com/gao/Striping
+
+:Striping a owl:Class ;
+	rdfs:subClassOf :InteriorPresentation ;
+	rdfs:label "striping"@en .
+# 
+# http://ontologies.makolab.com/gao/SunBlind
+
+:SunBlind a owl:Class ;
+	rdfs:subClassOf :InternalCarAccessory ;
+	rdfs:label "sun blind"@en .
+# 
+# http://ontologies.makolab.com/gao/Suspension
+
+:Suspension a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "suspension"@en , "zawieszenie pojazdu"@pl .
+# 
+# http://ontologies.makolab.com/gao/SwanNeckTowBar
+
+:SwanNeckTowBar a owl:Class ;
+	rdfs:subClassOf :TowBar ;
+	rdfs:label "swan neck tow bar"@en .
+# 
+# http://ontologies.makolab.com/gao/TabletHolder
+
+:TabletHolder a owl:Class ;
+	rdfs:subClassOf :InternalCarAccessory ;
+	rdfs:label "tablet holder"@en .
+# 
+# http://ontologies.makolab.com/gao/Tailgate
+
+:Tailgate a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "tailgate"@en .
+# 
+# http://ontologies.makolab.com/gao/Technology
+
+:Technology a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "technology"@en .
+# 
+# http://ontologies.makolab.com/gao/TintedRoof
+
+:TintedRoof a owl:Class ;
+	rdfs:subClassOf :Roof ;
+	rdfs:label "tinted roof"@en .
+# 
+# http://ontologies.makolab.com/gao/TintedWindow
+
+:TintedWindow a owl:Class ;
+	rdfs:subClassOf :Window ;
+	rdfs:label "tinted window"@en .
+# 
+# http://ontologies.makolab.com/gao/TomTomNavigation
+
+:TomTomNavigation a owl:Class ;
+	rdfs:subClassOf :Navigation ;
+	rdfs:label "TomTom navigation"@en ;
+	skos:altLabel "TomTom"@en .
+# 
+# http://ontologies.makolab.com/gao/TowBar
+
+:TowBar a owl:Class ;
+	rdfs:subClassOf :ExternalCarAccessory ;
+	rdfs:label "hak"@pl , "tow bar"@en .
+# 
+# http://ontologies.makolab.com/gao/TowBarMountedBicycleCarrier
+
+:TowBarMountedBicycleCarrier a owl:Class ;
+	rdfs:subClassOf :BicycleCarrier ;
+	rdfs:label "tow bar mounted bicycle carrier"@en .
+# 
+# http://ontologies.makolab.com/gao/ToxicitySensor
+
+:ToxicitySensor a owl:Class ;
+	rdfs:subClassOf :Sensor ;
+	rdfs:label "toxicity sensor"@en .
+# 
+# http://ontologies.makolab.com/gao/TrailerCoupling
+
+:TrailerCoupling a owl:Class ;
+	rdfs:subClassOf :ExternalCarAccessory ;
+	rdfs:label "trailer coupling"@en .
+# 
+# http://ontologies.makolab.com/gao/Transmission
+
+:Transmission a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "skrzynia biegów"@pl , "transmission"@en ;
+	skos:altLabel "gearbox"@en .
+# 
+# http://ontologies.makolab.com/gao/TrimStrip
+
+:TrimStrip a owl:Class ;
+	rdfs:subClassOf :ExteriorAppearance ;
+	rdfs:label "trim strip"@en .
+# 
+# http://ontologies.makolab.com/gao/TripComputer
+
+:TripComputer a owl:Class ;
+	rdfs:subClassOf :Connecting ;
+	rdfs:label "trip computer"@en .
+# 
+# http://ontologies.makolab.com/gao/TurnSignal
+
+:TurnSignal a owl:Class ;
+	rdfs:subClassOf :ActiveSafetySystem ;
+	rdfs:label "turn signal"@en .
+# 
+# http://ontologies.makolab.com/gao/Tyre
+
+:Tyre a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "opona"@pl , "tire"@en ;
+	skos:altLabel "tyre"@en .
+# 
+# http://ontologies.makolab.com/gao/TyreRepairProduct
+
+:TyreRepairProduct a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "tyre repair product"@en .
+# 
+# http://ontologies.makolab.com/gao/USB
+
+:USB a owl:Class ;
+	rdfs:subClassOf :Connecting ;
+	rdfs:label "USB"@en .
+# 
+# http://ontologies.makolab.com/gao/UnderEngineProtection
+
+:UnderEngineProtection a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "under engine protection element"@en ;
+	skos:altLabel "under engine protection"@en .
+# 
+# http://ontologies.makolab.com/gao/UnderFloorBox
+
+:UnderFloorBox a owl:Class ;
+	rdfs:subClassOf :StorageArea ;
+	rdfs:label "under floor box"@en .
+# 
+# http://ontologies.makolab.com/gao/UnderFloorStorage
+
+:UnderFloorStorage a owl:Class ;
+	rdfs:subClassOf :StorageArea ;
+	rdfs:label "under-floor storage"@en .
+# 
+# http://ontologies.makolab.com/gao/Upholestry
+
+:Upholestry a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "upholestry"@en .
+# 
+# http://ontologies.makolab.com/gao/UsedCar
+
+:UsedCar a owl:Class ;
+	rdfs:subClassOf :Car ;
+	rdfs:label "used car"@en .
+# 
+# http://ontologies.makolab.com/gao/Vehicle
+
+:Vehicle a owl:Class ;
+	rdfs:comment "A vehicle is a device that is designed or used to transport people or cargo over land, water, air, or through space."@en ;
+	rdfs:label "vehicle"@en ;
+	skos:exactMatch "https://schema.org/Vehicle"^^xsd:anyURI .
+# 
+# http://ontologies.makolab.com/gao/Ventilation
+
+:Ventilation a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "ventilation"@en .
+# 
+# http://ontologies.makolab.com/gao/VisibilityAndLighting
+
+:VisibilityAndLighting a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "visibility & lighting"@en ;
+	skos:hiddenLabel "lighting"@en , "visibility"@en .
+# 
+# http://ontologies.makolab.com/gao/VoiceControl
+
+:VoiceControl a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "voice control"@en .
+# 
+# http://ontologies.makolab.com/gao/WalkawayAutoLocking
+
+:WalkawayAutoLocking a owl:Class ;
+	rdfs:subClassOf :KeySystem ;
+	rdfs:label "walk-away auto locking"@en .
+# 
+# http://ontologies.makolab.com/gao/Wheel
+
+:Wheel a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "wheel"@en .
+# 
+# http://ontologies.makolab.com/gao/WheelArchMolding
+
+:WheelArchMolding a owl:Class ;
+	rdfs:subClassOf :ExternalCarAccessory ;
+	rdfs:label "wheel arch molding"@en .
+# 
+# http://ontologies.makolab.com/gao/WheelArchTrim
+
+:WheelArchTrim a owl:Class ;
+	rdfs:subClassOf :ExternalCarAccessory ;
+	rdfs:label "wheel arch trim"@en , "wykończenie nadkola"@pl .
+# 
+# http://ontologies.makolab.com/gao/Window
+
+:Window a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "window"@en .
+# 
+# http://ontologies.makolab.com/gao/WindowWinder
+
+:WindowWinder a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "window winder"@en .
+# 
+# http://ontologies.makolab.com/gao/WindscreenDemister
+
+:WindscreenDemister a owl:Class ;
+	rdfs:subClassOf :VisibilityAndLighting ;
+	rdfs:label "windscreen demister"@en ;
+	skos:altLabel "defogger"@en , "defroster"@en .
+# 
+# http://ontologies.makolab.com/gao/WindscreenWasher
+
+:WindscreenWasher a owl:Class ;
+	rdfs:subClassOf :VisibilityAndLighting ;
+	rdfs:label "windscreen washer"@en .
+# 
+# http://ontologies.makolab.com/gao/Wiper
+
+:Wiper a owl:Class ;
+	rdfs:subClassOf :ElementOfCarEquipement ;
+	rdfs:label "wiper"@en .
+# 
+# http://ontologies.makolab.com/gao/XenonFrontLight
+
+:XenonFrontLight a owl:Class ;
+	rdfs:subClassOf :Frontlight ;
+	rdfs:label "xenon front light"@en .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Individuals
+# #
+# #################################################################
+# 
+# 
+# http://ontologies.makolab.com/gao/ArdentBrown
+
+:ArdentBrown a owl:NamedIndividual , :Color ;
+	rdfs:label "ardent brown"@en .
+# 
+# http://ontologies.makolab.com/gao/Automatic
+
+:Automatic a owl:NamedIndividual , :Transmission ;
+	rdfs:label "Automatic Transmission"@en , "Automatyczna Skrzynia Biegów"@pl ;
+	skos:altLabel "automatic"@en ;
+	skos:hiddenLabel "EDC"@en .
+# 
+# http://ontologies.makolab.com/gao/AverageFuelConsumption
+
+:AverageFuelConsumption a owl:NamedIndividual , :FunctionOnBoardComputer ;
+	rdfs:label "average fuel consumption"@en .
+# 
+# http://ontologies.makolab.com/gao/AverageSpeed
+
+:AverageSpeed a owl:NamedIndividual , :FunctionOnBoardComputer ;
+	rdfs:label "average speed"@en .
+# 
+# http://ontologies.makolab.com/gao/Beige
+
+:Beige a owl:NamedIndividual , :Color ;
+	rdfs:label "beige"@en .
+# 
+# http://ontologies.makolab.com/gao/Black
+
+:Black a owl:NamedIndividual , :Color ;
+	rdfs:label "black"@en .
+# 
+# http://ontologies.makolab.com/gao/BlackMetallic
+
+:BlackMetallic a owl:NamedIndividual , :Color ;
+	rdfs:label "black metallic"@en .
+# 
+# http://ontologies.makolab.com/gao/Blue
+
+:Blue a owl:NamedIndividual , :Color ;
+	rdfs:label "blue"@en .
+# 
+# http://ontologies.makolab.com/gao/Cabriolet
+
+:Cabriolet a owl:NamedIndividual , :BodyType ;
+	rdfs:label "cabriolet"@en .
+# 
+# http://ontologies.makolab.com/gao/Cafe
+
+:Cafe a owl:NamedIndividual , :Color ;
+	rdfs:label "cafe"@en .
+# 
+# http://ontologies.makolab.com/gao/CassippeeGrey
+
+:CassippeeGrey a owl:NamedIndividual , :Color ;
+	rdfs:label "cassippee Grey"@en .
+# 
+# http://ontologies.makolab.com/gao/Convertible
+
+:Convertible a owl:NamedIndividual , :BodyType ;
+	rdfs:label "convertible"@en .
+# 
+# http://ontologies.makolab.com/gao/Coupe
+
+:Coupe a owl:NamedIndividual , :BodyType ;
+	rdfs:label "coupe"@en .
+# 
+# http://ontologies.makolab.com/gao/DiamondBlack
+
+:DiamondBlack a owl:NamedIndividual , :Color ;
+	rdfs:label "diamond black"@en .
+# 
+# http://ontologies.makolab.com/gao/Disel
+
+:Disel a owl:NamedIndividual , :EngineType ;
+	rdfs:label "DCI"@en , "DCI"@pl , "Diesel"@en , "Diesel"@pl .
+# 
+# http://ontologies.makolab.com/gao/DrivingSchoolVehicleUsage
+
+:DrivingSchoolVehicleUsage a owl:NamedIndividual , :CarUsageType ;
+	rdfs:label "driving school vehicle usage"@en ;
+	skos:exactMatch "http://auto.schema.org/DrivingSchoolVehicleUsage"^^xsd:anyURI .
+# 
+# http://ontologies.makolab.com/gao/DuskyBlue
+
+:DuskyBlue a owl:NamedIndividual , :Color ;
+	rdfs:label "dusky blue"@en .
+# 
+# http://ontologies.makolab.com/gao/EbonyBrown
+
+:EbonyBrown a owl:NamedIndividual , :Color ;
+	rdfs:label "ebony brown"@en .
+# 
+# http://ontologies.makolab.com/gao/Electric
+
+:Electric a owl:NamedIndividual , :EngineType ;
+	rdfs:label "electric"@en , "elektryczny"@pl ;
+	skos:hiddenLabel "5AGEN2"@en .
+# 
+# http://ontologies.makolab.com/gao/FlameRed
+
+:FlameRed a owl:NamedIndividual , :Color ;
+	rdfs:label "flame red"@en .
+# 
+# http://ontologies.makolab.com/gao/FrenchBlue
+
+:FrenchBlue a owl:NamedIndividual , :Color ;
+	rdfs:label "french blue"@en .
+# 
+# http://ontologies.makolab.com/gao/FuelUsed
+
+:FuelUsed a owl:NamedIndividual , :FunctionOnBoardComputer ;
+	rdfs:label "fuel used"@en .
+# 
+# http://ontologies.makolab.com/gao/GlacierWhite
+
+:GlacierWhite a owl:NamedIndividual , :Color ;
+	rdfs:label "glacier white"@en .
+# 
+# http://ontologies.makolab.com/gao/GlazedChestnut
+
+:GlazedChestnut a owl:NamedIndividual , :Color ;
+	rdfs:label "glazed chestnut"@en .
+# 
+# http://ontologies.makolab.com/gao/Grey
+
+:Grey a owl:NamedIndividual , :Color ;
+	rdfs:label "grey"@en .
+# 
+# http://ontologies.makolab.com/gao/Hatchback
+
+:Hatchback a owl:NamedIndividual , :BodyType ;
+	rdfs:label "hatchback"@en .
+# 
+# http://ontologies.makolab.com/gao/IceWhite
+
+:IceWhite a owl:NamedIndividual , :Color ;
+	rdfs:label "ice white"@en .
+# 
+# http://ontologies.makolab.com/gao/Ivory
+
+:Ivory a owl:NamedIndividual , :Color ;
+	rdfs:label "ivory"@en .
+# 
+# http://ontologies.makolab.com/gao/IvoryWhite
+
+:IvoryWhite a owl:NamedIndividual , :Color ;
+	rdfs:label "invory white"@en .
+# 
+# http://ontologies.makolab.com/gao/KilometresRemaining
+
+:KilometresRemaining a owl:NamedIndividual , :FunctionOnBoardComputer ;
+	rdfs:label "kilometres remaining"@en .
+# 
+# http://ontologies.makolab.com/gao/LightBlue
+
+:LightBlue a owl:NamedIndividual , :Color ;
+	rdfs:label "light blue"@en .
+# 
+# http://ontologies.makolab.com/gao/LightningYellow
+
+:LightningYellow a owl:NamedIndividual , :Color ;
+	rdfs:label "lightning yellow"@en .
+# 
+# http://ontologies.makolab.com/gao/MaltaBlue
+
+:MaltaBlue a owl:NamedIndividual , :Color ;
+	rdfs:label "malta blue"@en .
+# 
+# http://ontologies.makolab.com/gao/Manual
+
+:Manual a owl:NamedIndividual , :Transmission ;
+	rdfs:label "manual transmission"@en , "ręczna skrzynia biegów"@pl ;
+	skos:altLabel "manual"@en .
+# 
+# http://ontologies.makolab.com/gao/MapleRed
+
+:MapleRed a owl:NamedIndividual , :Color ;
+	rdfs:label "maple red"@en .
+# 
+# http://ontologies.makolab.com/gao/MarsGrey
+
+:MarsGrey a owl:NamedIndividual , :Color ;
+	rdfs:label "mars grey"@en .
+# 
+# http://ontologies.makolab.com/gao/MercurySilver
+
+:MercurySilver a owl:NamedIndividual , :Color ;
+	rdfs:label "mercury silver"@en .
+# 
+# http://ontologies.makolab.com/gao/MetallicBlack
+
+:MetallicBlack a owl:NamedIndividual , :Color ;
+	rdfs:label "metallic black"@en .
+# 
+# http://ontologies.makolab.com/gao/MineralBeige
+
+:MineralBeige a owl:NamedIndividual , :Color ;
+	rdfs:label "mineral beige"@en .
+# 
+# http://ontologies.makolab.com/gao/NavyBlue
+
+:NavyBlue a owl:NamedIndividual , :Color ;
+	rdfs:label "navy blue"@en .
+# 
+# http://ontologies.makolab.com/gao/OysterGray
+
+:OysterGray a owl:NamedIndividual , :Color ;
+	rdfs:label "oyster gray"@en ;
+	skos:altLabel "oyster grey"@en .
+# 
+# http://ontologies.makolab.com/gao/PacificBlue
+
+:PacificBlue a owl:NamedIndividual , :Color ;
+	rdfs:label "pacific blue"@en .
+# 
+# http://ontologies.makolab.com/gao/PassionRed
+
+:PassionRed a owl:NamedIndividual , :Color ;
+	rdfs:label "passion red"@en .
+# 
+# http://ontologies.makolab.com/gao/PearlBlack
+
+:PearlBlack a owl:NamedIndividual , :Color ;
+	rdfs:label "pearl black"@en .
+# 
+# http://ontologies.makolab.com/gao/PearlWhite
+
+:PearlWhite a owl:NamedIndividual , :Color ;
+	rdfs:label "pearl white"@en .
+# 
+# http://ontologies.makolab.com/gao/PersianBlue
+
+:PersianBlue a owl:NamedIndividual , :Color ;
+	rdfs:label "persian blue"@en .
+# 
+# http://ontologies.makolab.com/gao/Petrol
+
+:Petrol a owl:NamedIndividual , :EngineType ;
+	rdfs:label "benzynowy"@pl , "petrol"@en ;
+	skos:hiddenLabel "1.2 16V"@en , "GT 205"@en , "sCe"@en , "tCe"@en .
+# 
+# http://ontologies.makolab.com/gao/Pickup
+
+:Pickup a owl:NamedIndividual , :BodyType ;
+	rdfs:label "pickup"@en .
+# 
+# http://ontologies.makolab.com/gao/PowerSteering
+
+:PowerSteering a owl:NamedIndividual , :SteeringType ;
+	rdfs:label "power steering"@en .
+# 
+# http://ontologies.makolab.com/gao/Red
+
+:Red a owl:NamedIndividual , :Color ;
+	rdfs:label "red"@en .
+# 
+# http://ontologies.makolab.com/gao/RentalVehicleUsage
+
+:RentalVehicleUsage a owl:NamedIndividual , :CarUsageType ;
+	rdfs:label "rental vehicle usage"@en ;
+	skos:exactMatch "http://auto.schema.org/RentalVehicleUsage"^^xsd:anyURI .
+# 
+# http://ontologies.makolab.com/gao/RubyRed
+
+:RubyRed a owl:NamedIndividual , :Color ;
+	rdfs:label "ruby red"@en .
+# 
+# http://ontologies.makolab.com/gao/SUV
+
+:SUV a owl:NamedIndividual , :BodyType ;
+	rdfs:label "SUV"@en ;
+	skos:altLabel "MUV"@en .
+# 
+# http://ontologies.makolab.com/gao/Sedan
+
+:Sedan a owl:NamedIndividual , :BodyType ;
+	rdfs:label "sedan"@en .
+# 
+# http://ontologies.makolab.com/gao/Silver
+
+:Silver a owl:NamedIndividual , :Color ;
+	rdfs:label "silver"@en .
+# 
+# http://ontologies.makolab.com/gao/SmokeyBlueMarine
+
+:SmokeyBlueMarine a owl:NamedIndividual , :Color ;
+	rdfs:label "smokey blue marine"@en .
+# 
+# http://ontologies.makolab.com/gao/StationWagon
+
+:StationWagon a owl:NamedIndividual , :BodyType ;
+	rdfs:label "station wagon"@en .
+# 
+# http://ontologies.makolab.com/gao/Stone
+
+:Stone a owl:NamedIndividual , :Color ;
+	rdfs:label "stone"@en .
+# 
+# http://ontologies.makolab.com/gao/SunsetOrange
+
+:SunsetOrange a owl:NamedIndividual , :Color ;
+	rdfs:label "sunset orange"@en .
+# 
+# http://ontologies.makolab.com/gao/TaxiVehicleUsage
+
+:TaxiVehicleUsage a owl:NamedIndividual , :CarUsageType ;
+	rdfs:label "taxi vehicle usage"@en ;
+	skos:exactMatch "http://auto.schema.org/TaxiVehicleUsage"^^xsd:anyURI .
+# 
+# http://ontologies.makolab.com/gao/TotalDistance
+
+:TotalDistance a owl:NamedIndividual , :FunctionOnBoardComputer ;
+	rdfs:label "total distance"@en .
+# 
+# http://ontologies.makolab.com/gao/TripDistance
+
+:TripDistance a owl:NamedIndividual , :FunctionOnBoardComputer ;
+	rdfs:label "trip distance"@en .
+# 
+# http://ontologies.makolab.com/gao/Truck
+
+:Truck a owl:NamedIndividual , :BodyType ;
+	rdfs:label "truck"@en .
+# 
+# http://ontologies.makolab.com/gao/UltraSilver
+
+:UltraSilver a owl:NamedIndividual , :Color ;
+	rdfs:label "ultra silver"@en .
+# 
+# http://ontologies.makolab.com/gao/Van
+
+:Van a owl:NamedIndividual , :BodyType ;
+	rdfs:label "van"@en ;
+	skos:altLabel "minivan"@en .
+# 
+# http://ontologies.makolab.com/gao/White
+
+:White a owl:NamedIndividual , :Color ;
+	rdfs:label "white"@en .
+# 
+# Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi
